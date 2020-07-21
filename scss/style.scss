@@ -334,9 +334,10 @@ h1, h2, h3, h4, h5,
 		background-repeat: no-repeat;
 		background-position: center center;
 		height: calc(100vh - 117px);
-		min-height: 800px;
+		min-height: 100%;
 		position: relative;
 		.overlay{
+			width: 100%;
 			position: absolute;
 			top: 0;
 			left: 0;
@@ -540,7 +541,7 @@ h1, h2, h3, h4, h5,
 	position: relative;
 	&:after{
 		content: '';
-	   position: relative;
+	   position: absolute;
 	   left: 0;
 	   bottom: -50px;
 		overflow: visible;
