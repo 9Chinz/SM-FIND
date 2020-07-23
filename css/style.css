@@ -8963,7 +8963,7 @@ textarea.form-control {
 }
 
 .profile::before{
-  margin-top: 20px;
+  
   content: '';
   left: 0;
   bottom: -50px;
@@ -8986,13 +8986,20 @@ textarea.form-control {
   background-color: #fff;
 }
 .profileblock{
-  padding-right: 300px;
-margin-left: 100px;
+  
+margin-left: 5%;
+background-color: #E4E4E4;
+width: 60%;
+border-radius: 10px;
+box-shadow: 5px 5px 5px  #B9B9B9 ;
 }
 .profileblock p{
   font-weight: 530;
   font-size: 30px;
+  padding-left: 3%;
+  
 }
+
 .imgprofile {
   margin-left:10%;
   max-width: 100%;
@@ -9019,6 +9026,7 @@ margin-left: 100px;
 }
 .headleader h1{
  margin-bottom: 0;
+ font-size: 40px;
 }
 .leaderboardbox{
   background-color: #fff;
@@ -9065,10 +9073,11 @@ margin-left: 100px;
   row-gap: 8px;
   width: 50%;
   margin-left: 20%;
+  height: 85%;
 }
 .quest__profiles {
   display: grid;
-  grid-template-columns: 3fr 1fr 1fr 1fr;
+  grid-template-columns: 4fr 1fr 1fr 1fr;
   align-items: center;
   padding: 10px 10px 10px 10px;
   overflow: hidden;
@@ -9077,7 +9086,7 @@ margin-left: 100px;
   cursor: pointer;
   transition: transform 0.25s cubic-bezier(0.7, 0.98, 0.86, 0.98), box-shadow 0.25s cubic-bezier(0.7, 0.98, 0.86, 0.98);
   background-color: #fff;
-  grid-template-columns: 250px 0px 70px 30px;
+  
 }
 .quest__picture{
   max-width: 100%;
@@ -9091,23 +9100,12 @@ margin-left: 100px;
 .quest__profiles:hover{
   transform: scale(1.2);
 }
-@media (max-width: 576px) {
-  .imgprofile{
-    
-  }
-  .profileblock {
-    margin-left: 10%;
-    margin-top: 10%;
-  }
-  .quest{
-    margin-top: 10%;
-  }
-}
 
 
 @media (max-width: 768px) {
   .profileblock {
-    
+    margin-left: 10%;
+    width: 70%;
     margin-top: 10%;
   }
   .quest{
@@ -9128,3 +9126,29 @@ margin-left: 100px;
     margin-top: 10%;
   }
    }
+   @media (max-width: 1636px){
+    .profileblock {
+    
+      margin-top: 5%;
+    }
+   }
+   @media (max-width: 576px) {
+    .imgprofile{
+      width: 50%;
+      margin-left: 25%;
+    }
+    .profileblock {
+      margin-left: 10%;
+      padding-right: -10px;
+      padding-right: 0;
+      margin-top: 15%;
+      width: 70%;
+    }
+    .profileblock p{
+      font-size: 100%;
+    }
+    .quest{
+      margin-top: 10%;
+    }
+  }
+  

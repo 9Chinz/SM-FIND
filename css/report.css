@@ -55,7 +55,7 @@
     display: block; }
   
   body {
-      overflow: hidden;
+    
     margin: 0;
     font-family: "Work Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
     font-size: 1rem;
@@ -7311,7 +7311,7 @@
   
   .ftco-navbar-light {
     background: transparent !important;
-    position: absolute;
+  
     left: 0;
     right: 0;
     z-index: 3;
@@ -7512,7 +7512,7 @@
       position: relative; }
       .home-slider .slider-item .overlay {
         height: 120%;
-        position: absolute;
+        
         top: 0;
         left: 0;
         right: 0;
@@ -8949,75 +8949,7 @@
       stroke-dasharray: 89, 200;
       stroke-dashoffset: -136px; } }
   /* change me */
-  .visiblenav{
-    display: none;
-  }
-  .registerleft{
-    margin-left: 2%;
-  }
-  
-  .dun{
-    margin: auto 7%;
-    padding-right: 0;
-  }
-  .fixfont{
-    font-weight: 1000;
-  }
-  .profile::before{
-    margin-top: 20px;
-    content: '';
-    left: 0;
-    bottom: -50px;
-    overflow: visible;
-    width: 100%;
-    height: 50px;
-    z-index: 0;
-    background-color: #fff;
-    margin-bottom: 30px;
-  }
-  .profile::after{
-    margin-top: 20px;
-    content: '';
-    left: 0;
-    bottom: -50px;
-    overflow: visible;
-    width: 100%;
-    height: 50px;
-    z-index: 0;
-    background-color: #fff;
-  }
-  .profileblock{
-    
-  margin-left: 200px;
-  }
-  .profileblock p{
-    font-weight: 530;
-    font-size: 30px;
-  }
-  .imgprofile {
-    margin-left:10%;
-    max-width: 100%;
-    width:400px;
-    border-radius: 100%;
-    box-shadow: 0 0 0 10px #ebeef3, 0 0 0 22px #f3f4f6;
-  }
-  .text-center img{
-    width: 200px;
-    height: 200px;
-    border-radius: 100%;
-  }
-  .inputcash{
-    display: block;
-  }
-  .depositbox{
-    margin: 10px auto;
-  }
-  .depositbox input{
-    border-radius: 10px;
-    
-  }
-  .depositbox input:focus{
-    
-    
-  }
+ .tableblock{
+   margin-top: 10%;
+ }
   

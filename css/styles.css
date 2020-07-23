@@ -589,4 +589,32 @@ label.valid {
     margin-right: 0px;
     margin-bottom: 10px; } }
 
+.labelsection{
+  position: relative;
+  margin-left: 5%;
+}
+    #section{
+      width: 20%;
+      position: relative;
+    }
+    .form-group-s{
+      
+        position: relative;
+        margin-bottom: 25px;
+       
+    }
+    .labelmajor{
+      position: relative;
+      margin-left: 5%;
+    }
+    #major{
+      width: 20%;
+      position: relative;
+    }
+    .form-group-a{
+
+    }
+    .class{
+      width: 50%;
+    }
 /*# sourceMappingURL=style.css.map */
