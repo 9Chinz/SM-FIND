@@ -4,6 +4,7 @@ session_start();
 if(isset($_POST['signin'])){
     //? include file
     require 'connect.php';
+    require "log.php";
 
     //? get data from form
     $username = $_POST['email'];
