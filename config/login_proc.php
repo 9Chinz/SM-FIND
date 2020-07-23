@@ -23,28 +23,28 @@ if(isset($_POST['signin'])){
     $row = mysqli_fetch_array($result);
 
     if($row){
-        $event = "รหัส ".$rowMember['MemberCode']." ".$rowMember['Firstname']." has login successful !";
-        log_member($event, $rowMember['MemberID']);
+        $event = "รหัส ".$row['MemberCode']." ".$row['Firstname']." has login successful !";
+        log_member($event, $row['MemberID']);
 
         //! select data save into session to use it another page
-        $_SESSION['id'] = $rowMember['MemberID'];
-        $_SESSION['code'] = $rowMember['MemberCode'];
-        $_SESSION['username'] = $rowMember['Firstname']." ".$rowMember['Lastname'];
-        $_SESSION['firstname'] = $rowMember['Firstname'];
-        $_SESSION['lastname'] = $rowMember['Lastname'];
-        $_SESSION['dept'] = $rowMember['Dept'];
-        $_SESSION['level'] = $rowMember['Section'].".".$rowMember['Class']."/".$rowMember['Room'];
-        $_SESSION['tel'] = $rowMember['Tel'];
+        $_SESSION['id'] = $row['MemberID'];
+        $_SESSION['code'] = $row['MemberCode'];
+        $_SESSION['username'] = $row['Firstname']." ".$row['Lastname'];
+        $_SESSION['firstname'] = $row['Firstname'];
+        $_SESSION['lastname'] = $row['Lastname'];
+        $_SESSION['dept'] = $row['Dept'];
+        $_SESSION['level'] = $row['Section'].".".$row['Class']."/".$row['Room'];
+        $_SESSION['tel'] = $row['Tel'];
         $_SESSION['email'] = $username;
-        $_SESSION['userlevel'] = $rowMember['Userlevel'];
-        $_SESSION['specialStatus'] = $rowMember['SpecialStatus'];
+        $_SESSION['userlevel'] = $row['Userlevel'];
+        $_SESSION['specialStatus'] = $row['SpecialStatus'];
         $_SESSION['hasLogin'] = true;
 
         echo "<script type='text/javascript'>alert('login sucessful')</script>";
-        echo '<meta http-equiv="refresh" content="1; url=../about.php"> ';
+        echo '<meta http-equiv="refresh" content="10; url=../about.php"> ';
     }else {
         echo "<script type='text/javascript'>alert('login fail')</script>";
-        echo '<meta http-equiv="refresh" content="1; url=../index.php"> ';
+        echo '<meta http-equiv="refresh" content="10; url=../index.php"> ';
     }
     mysqli_close($conn);
 }
