@@ -72,7 +72,9 @@
                 </strong>
               </h1>
               <p>SM FIN D เป็น web-application ที่จะทำให้คุณสะดวกสะบายไปกับการฝากเงินของคุณ พร้อมทั้งระบบ gamification ที่จะทำให้คุณสนุกไปกับการฝากเงิน</p>
+              <?php if(!isset($_SESSION['hasLogin'])){ ?>
               <p><a href="login.php" class="btn btn-primary btn-outline-white px-4 py-3"> LOGIN </a> <a href="register.php" class="btn btn-primary btn-outline-white px-4 py-3 registerleft"> REGISTER </a></p>
+              <?php } ?>
             </div>
           </div>
         </div>
@@ -95,17 +97,17 @@
           <div class="block-3 d-md-flex ftco-animate">
             <a href="" class="image" style="background-image: url('images/technology2.svg'); "></a>
             <div class="text">
-              <h4 class="subheading">Illustration</h4>
-              <h2 class="heading"><a href="">Even the all-powerful Pointing has no control</a></h2>
-              <p>Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic life One day however a small line of blind text by the name of Lorem Ipsum decided to leave for the far World of Grammar.</p>
+              <h4 class="subheading">Gamification</h4>
+              <h2 class="heading"><a href="">game-design elements </a></h2>
+              <p>Gamification เป็น Apps หรือบริการที่นำเอาคอนเซ็ปของเกมมาประยุกต์ใช้ มีการวางกลไกของเกมภายใน App อาทิเช่น การกำหนดกิจกรรมให้ทำ มีการนำเสนอแต้ม, leader boards, levels, badge ต่างๆ มาประยุกต์เป็นส่วนหนึ่งของเนื้อหาเพื่อการกระตุ้นและดึงความสนใจให้คนมาเข้าร่วม พอพูดคร่าวๆ แบบนี้แล้วทุกคนก็เริ่มจะร้อง อ๋อ เพราะว่าหลายคนก็คงเคยใช้ App ประเภท Gamification มาแล้วกันทั้งนั้น อย่างเช่น Location-Based Game ที่ชื่อว่า Foursquare ที่แบรนด์ต่างๆ สามารถให้รางวัลเมื่อเข้ามาทำการ Checkin ตามกฎเกณฑ์ที่กำหนด</p>
             </div>
           </div>
           <div class="block-3 d-md-flex ftco-animate">
             <a href="" class="image order-2" style="background-image: url('images/business.svg'); "></a>
             <div class="text order-1">
-              <h4 class="subheading">Application</h4>
-              <h2 class="heading"><a href="">Even the all-powerful Pointing has no control</a></h2>
-              <p>Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic life One day however a small line of blind text by the name of Lorem Ipsum decided to leave for the far World of Grammar.</p>
+              <h4 class="subheading">E-Banking</h4>
+              <h2 class="heading"><a href="">a method of banking in which the customer conducts transactions electronically via the Internet</a></h2>
+              <p>E-Banking คือ การทำธุรกรรมต่างๆ กับธนาคาร โดยผ่านเครือข่ายอินเตอร์เน็ต เช่น การฝากเงิน ถอนเงิน โอนเงิน หรือ สอบถามยอดเงิน เป็นต้น E-Banking อาจเรียกด้วยชื่ออื่น เช่น Internet Banking (ธนาคารอินเตอร์เน็ต), Online Banking (ธนาคารออนไลน์), Electronic Banking (ธนาคารอิเล็กทรอนิกส์), Cyber Banking (ธนาคารไซเบอร์) เป็นต้น</p>
             </div>
           </div>
           <div class="block-3 d-md-flex ftco-animate">

@@ -25,7 +25,9 @@ if(isset($_POST['signin'])){
     if($row){
         $event = "รหัส ".$row['MemberCode']." ".$row['Firstname']." has login successful !";
         log_member($event, $row['MemberID']);
-
+        $id = $row['MemberID'];
+        $account_sql = mysqli_query($conn, "SELECT * FROM member_account WHERE MemberID = '$id'; ");
+        $accountRow = mysqli_fetch_array($account_sql);
         //! select data save into session to use it another page
         $_SESSION['id'] = $row['MemberID'];
         $_SESSION['code'] = $row['MemberCode'];
@@ -39,6 +41,9 @@ if(isset($_POST['signin'])){
         $_SESSION['userlevel'] = $row['Userlevel'];
         $_SESSION['specialStatus'] = $row['SpecialStatus'];
         $_SESSION['hasLogin'] = true;
+        $_SESSION['accountNumber'] = $accountRow['Account_number'];
+        $_SESSION['Bankbook'] = $accountRow['Bankbook'];
+        $_SESSION['balance'] = $accountRow['Account_balance'];
 
         echo "<script type='text/javascript'>alert('login sucessful')</script>";
         echo '<meta http-equiv="refresh" content="1; url=../about.php"> ';

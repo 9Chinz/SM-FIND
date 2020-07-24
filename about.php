@@ -45,7 +45,7 @@
               <p class="breadcrumbs"><span class="mr-2"><a href="index.php">Home</a></span> <span>Profile</span></p>
               <h1 class="mb-3 bread">welcome</h1>
               <h1 class="mb-3 fixfont"><?php echo $_SESSION['username']; ?></h1>
-              <h1 class="mb-3 bread">0 ฿</h1>
+              <h1 class="mb-3 bread"><?php echo $_SESSION['balance']; ?> ฿</h1>
             </div>
           </div>
         </div>
@@ -145,57 +145,56 @@
                     
                   </div>
                   <div class="text">
-                    <p class="mb-5">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
-                    <p class="name">Dennis Green</p>
-                    <span class="position">Marketing Manager</span>
+                    
+                    <p class="name">เจ้าแห่งการปลูก</p>
+                    <span class="position">ปลูกต้นไม้ครบ 10 ครั้ง</span>
                   </div>
                 </div>
               </div>
               <div class="item text-center">
                 <div class="testimony-wrap p-4 pb-5">
-                  <div class="user-img mb-4" style="background-image: url(images/person_2.jpg)">
+                  <div class="user-img mb-4" style="background-image: url(images/farm.svg)">
                     
                   </div>
                   <div class="text">
-                    <p class="mb-5">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
-                    <p class="name">Dennis Green</p>
-                    <span class="position">Interface Designer</span>
+                  <p class="name">เจ้าแห่งการปลูก</p>
+                    <span class="position">ปลูกต้นไม้ครบ 10 ครั้ง</span>
                   </div>
                 </div>
               </div>
               <div class="item text-center">
                 <div class="testimony-wrap p-4 pb-5">
-                  <div class="user-img mb-4" style="background-image: url(images/person_3.jpg)">
+                  <div class="user-img mb-4" style="background-image: url(images/farm.svg)">
                
                   </div>
                   <div class="text">
-                    <p class="mb-5">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
-                    <p class="name">Dennis Green</p>
-                    <span class="position">UI Designer</span>
+                    
+                  <p class="name">เจ้าแห่งการปลูก</p>
+                    <span class="position">ปลูกต้นไม้ครบ 10 ครั้ง</span>
                   </div>
                 </div>
               </div>
               <div class="item text-center">
                 <div class="testimony-wrap p-4 pb-5">
-                  <div class="user-img mb-4" style="background-image: url(images/person_1.jpg)">
+                  <div class="user-img mb-4" style="background-image: url(images/farm.svg)">
                 
                   </div>
                   <div class="text">
-                    <p class="mb-5">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
-                    <p class="name">Dennis Green</p>
-                    <span class="position">Web Developer</span>
+                    
+                  <p class="name">เจ้าแห่งการปลูก</p>
+                    <span class="position">ปลูกต้นไม้ครบ 10 ครั้ง</span>
                   </div>
                 </div>
               </div>
               <div class="item text-center">
                 <div class="testimony-wrap p-4 pb-5">
-                  <div class="user-img mb-4" style="background-image: url(images/person_1.jpg)">
+                  <div class="user-img mb-4" style="background-image: url(images/farm.svg)">
 
                   </div>
                   <div class="text">
-                    <p class="mb-5">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
-                    <p class="name">Dennis Green</p>
-                    <span class="position">System Analytics</span>
+                   
+                  <p class="name">เจ้าแห่งการปลูก</p>
+                    <span class="position">ปลูกต้นไม้ครบ 10 ครั้ง</span>
                   </div>
                 </div>
               </div>

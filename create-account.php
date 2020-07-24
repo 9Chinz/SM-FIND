@@ -59,21 +59,21 @@ session_start();
         </div>
         <div class="row block-9">
           <div class="col-md-6 pr-md-5">
-            <form action="#">
+            <form action="./backend-file/add-account.php" method="POST">
               <div class="form-group">
-                <input type="text" class="form-control" name="" placeholder="ชื่อจริง">
+                <input type="text" class="form-control" name="chinnapat" placeholder="ชื่อจริง">
               </div>
               <div class="form-group">
-                <input type="text" class="form-control" name="" placeholder="นามสกุล">
+                <input type="text" class="form-control" name="lastname" placeholder="นามสกุล">
               </div>
               <div class="form-group">
-                <input type="email" class="form-control" name="" placeholder="email">
+                <input type="email" class="form-control" name="email" placeholder="email">
               </div>
               <div class="form-group">
-                <input type="number" class="form-control" placeholder="ขั้นต่ำ 100 บาท" min="100">
+                <input type="number" class="form-control" name="cash" placeholder="ขั้นต่ำ 100 บาท" min="100">
               </div>
               <div class="form-group">
-                <input type="submit" value="สมัคร" class="btn btn-primary py-3 px-5">
+                <input type="submit" name="btn-create" value="สมัคร" class="btn btn-primary py-3 px-5">
               </div>
             </form>
           
