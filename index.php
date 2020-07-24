@@ -1,3 +1,6 @@
+<?php
+ session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -28,6 +31,9 @@
   </head>
   <body>
     
+    <?php if(isset($_SESSION['hasLogin'])) { 
+      require "./navbar.php";
+    }else { ?>
     <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
       <div class="container">
         <a class="navbar-brand" href="index.html">SM FIN D</a>
@@ -37,21 +43,21 @@
 
         <div class="collapse navbar-collapse" id="ftco-nav">
           <ul class="navbar-nav ml-auto">
-            <li class="nav-item active"><a href="index.html" class="nav-link">หน้าหลัก</a></li>
+            <li class="nav-item active"><a href="index.php" class="nav-link">หน้าหลัก</a></li>
           <!--  <li class="nav-item"><a href="about.html" class="nav-link">เกี่ยวกับเรา</a></li>--->
-            <li class="nav-item dropdown visiblenav">
+            <!--<li class="nav-item dropdown visiblenav">
               <a class="nav-link dropdown-toggle" href="room.html" id="dropdown04" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Portfolio</a>
                 <div class="dropdown-menu" aria-labelledby="dropdown04">
                   <a class="dropdown-item" href="portfolio.html">Portfolio</a>
                   <a class="dropdown-item" href="portfolio-single.html">Portfolio Single</a>
                 </div>
-            </li>
+            </li> !-->
             
            <!--  <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>--->
           </ul>
         </div>
       </div>
-    </nav>
+    </nav> <?php } ?>
     <!-- END nav -->
     
     <section class="home-slider ftco-degree-bg">
@@ -65,8 +71,8 @@
                   <span class="wrap"></span>
                 </strong>
               </h1>
-              <p>A small river named Duden flows by their place and supplies it with the necessary regelialia. It is a paradisematic country, in which roasted parts of sentences fly into your mouth.</p>
-              <p><a href="login.html" class="btn btn-primary btn-outline-white px-4 py-3"> LOGIN </a> <a href="register.html" class="btn btn-primary btn-outline-white px-4 py-3 registerleft"> register </a></p>
+              <p>SM FIN D เป็น web-application ที่จะทำให้คุณสะดวกสะบายไปกับการฝากเงินของคุณ พร้อมทั้งระบบ gamification ที่จะทำให้คุณสนุกไปกับการฝากเงิน</p>
+              <p><a href="login.php" class="btn btn-primary btn-outline-white px-4 py-3"> LOGIN </a> <a href="register.php" class="btn btn-primary btn-outline-white px-4 py-3 registerleft"> REGISTER </a></p>
             </div>
           </div>
         </div>
@@ -87,26 +93,26 @@
         </div>
         <div class="row no-gutters dun">
           <div class="block-3 d-md-flex ftco-animate">
-            <a href="portfolio.html" class="image" style="background-image: url('images/technology2.svg'); "></a>
+            <a href="" class="image" style="background-image: url('images/technology2.svg'); "></a>
             <div class="text">
               <h4 class="subheading">Illustration</h4>
-              <h2 class="heading"><a href="portfolio.html">Even the all-powerful Pointing has no control</a></h2>
+              <h2 class="heading"><a href="">Even the all-powerful Pointing has no control</a></h2>
               <p>Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic life One day however a small line of blind text by the name of Lorem Ipsum decided to leave for the far World of Grammar.</p>
             </div>
           </div>
           <div class="block-3 d-md-flex ftco-animate">
-            <a href="portfolio.html" class="image order-2" style="background-image: url('images/business.svg'); "></a>
+            <a href="" class="image order-2" style="background-image: url('images/business.svg'); "></a>
             <div class="text order-1">
               <h4 class="subheading">Application</h4>
-              <h2 class="heading"><a href="portfolio.html">Even the all-powerful Pointing has no control</a></h2>
+              <h2 class="heading"><a href="">Even the all-powerful Pointing has no control</a></h2>
               <p>Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic life One day however a small line of blind text by the name of Lorem Ipsum decided to leave for the far World of Grammar.</p>
             </div>
           </div>
           <div class="block-3 d-md-flex ftco-animate">
-            <a href="portfolio.html" class="image" style="background-image: url('images/data.svg'); "></a>
+            <a href="" class="image" style="background-image: url('images/data.svg'); "></a>
             <div class="text">
               <h4 class="subheading">Web Design</h4>
-              <h2 class="heading"><a href="portfolio.html">Even the all-powerful Pointing has no control</a></h2>
+              <h2 class="heading"><a href="">Even the all-powerful Pointing has no control</a></h2>
               <p>Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic life One day however a small line of blind text by the name of Lorem Ipsum decided to leave for the far World of Grammar.</p>
             </div>
           </div>
@@ -152,65 +158,7 @@
     </section>
 
    
-    <footer class="ftco-footer ftco-bg-dark ftco-section">
-      <div class="container">
-        <div class="row mb-5">
-          <div class="col-md">
-            <div class="ftco-footer-widget mb-4">
-              <h2 class="ftco-heading-2">ติดต่อเรา</h2>
-              <p>วิทยาลัยเทคโนโลยีสยามบริหารธุรกิจ</p>
-              <p>SBAC สะพานไหม่</p>
-              <p>6/559 ซ.พหลโยธิน ถ.พหลโยธิน</p>
-              <p>เขตสายไหม กรุงเทพฯ 10220</p>
-              <ul class="ftco-footer-social list-unstyled float-md-left float-lft">
-                <li class="ftco-animate"><a href="https://www.facebook.com/sbacsaphanmai/"><span class="icon-facebook"></span></a></li>
-                <li class="ftco-animate"><a href="#"><span class="icon-mail_outline"></span></a></li>
-              </ul>
-            </div>
-          </div>
-          <div class="col-md">
-             <div class="ftco-footer-widget mb-4">
-              <h2 class="ftco-heading-2">Quick Links</h2>
-              <ul class="list-unstyled">
-                <li><a href="#" class="py-2 d-block">Home</a></li>
-                <li><a href="#" class="py-2 d-block">About</a></li>
-                <li><a href="#" class="py-2 d-block">Services</a></li>
-                <li><a href="#" class="py-2 d-block">Portfolio</a></li>
-                <li><a href="#" class="py-2 d-block">Contact</a></li>
-                <li><a href="#" class="py-2 d-block">Privacy</a></li>
-              </ul>
-            </div>
-          </div>
-          <div class="col-md">
-             <div class="ftco-footer-widget mb-4">
-              <h2 class="ftco-heading-2">About SBAC</h2>
-              <p>
-                 Accredited by Royal Award Academy and Asia Pacific Accreditation and Certification Commission.</p>
-            </div>
-          </div>
-          <div class="col-md"style="display:none;">
-            <div class="ftco-footer-widget mb-4">
-              <h2 class="ftco-heading-2">Newsletter</h2>
-              <p>Far far away, behind the word mountains, far from the countries.</p>
-              <form action="#" class="subscribe-form">
-                <div class="form-group">
-                  <span class="icon icon-paper-plane"></span>
-                  <input type="text" class="form-control" placeholder="Subscribe">
-                </div>
-              </form>
-            </div>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-md-12 text-center">
-
-            <p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-  Copyright &copy;<script>document.write(new Date().getFullYear());</script> sbac.ac.th All Right Reserved
-  <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
-          </div>
-        </div>
-      </div>
-    </footer>
+    <?php include "./footer.php"  ?>
     
   
 

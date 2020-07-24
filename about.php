@@ -1,3 +1,8 @@
+<?php
+  session_start();
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -28,33 +33,7 @@
   </head>
   <body>
     
-    <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
-      <div class="container">
-        <a class="navbar-brand" href="index.html">SM FIN D</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="oi oi-menu"></span> Menu
-        </button>
-
-        <div class="collapse navbar-collapse" id="ftco-nav">
-          <ul class="navbar-nav ml-auto">
-            <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
-            <li class="nav-item active"><a href="about.html" class="nav-link">My profile</a></li>
-       
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="room.html" id="dropdown04" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">service</a>
-                <div class="dropdown-menu" aria-labelledby="dropdown04">
-                  <a class="dropdown-item" href="create-account.html">Create account</a>
-                  <a class="dropdown-item" href="deposit.html">Deposit</a>
-                  <a class="dropdown-item" href="portfolio-single.html">Withdraw</a>
-                  <a class="dropdown-item" href="report.html">รายงานเงินฝาก</a>
-                </div>
-            </li>
-           
-            <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
-          </ul>
-        </div>
-      </div>
-    </nav>
+    <?php require "./navbar.php" ?>
     <!-- END nav -->
     
      <section class="home-slider ftco-degree-bg">
@@ -63,9 +42,9 @@
         <div class="container">
           <div class="row slider-text justify-content-center align-items-center">
             <div class="col-md-10 col-sm-12 ftco-animate mb-4 text-center">
-              <p class="breadcrumbs"><span class="mr-2"><a href="index.html">Home</a></span> <span>About</span></p>
+              <p class="breadcrumbs"><span class="mr-2"><a href="index.php">Home</a></span> <span>Profile</span></p>
               <h1 class="mb-3 bread">welcome</h1>
-              <h1 class="mb-3 fixfont">Yannawut tintalabbbbbb</h1>
+              <h1 class="mb-3 fixfont"><?php echo $_SESSION['username']; ?></h1>
               <h1 class="mb-3 bread">0 ฿</h1>
             </div>
           </div>
@@ -76,11 +55,11 @@
     <section class="row profile">
         <img src="images/person_1.jpg" alt="" class="imgprofile" >
         <div class="profileblock">
-          <p>รหัสนักศึกษา:</p>
-          <p>ชื่อ-นามสกุล:</p>
-          <p>ชั้น:</p>
-          <p>สาขา:</p>
-          <p>email:</p>
+          <p>รหัสนักศึกษา: <?php echo $_SESSION['code']; ?></p>
+          <p>ชื่อ-นามสกุล: <?php echo $_SESSION['username']; ?></p>
+          <p>ชั้น: <?php echo $_SESSION['level']; ?></p>
+          <p>สาขา: <?php echo $_SESSION['dept']; ?></p>
+          <p>email: <?php echo $_SESSION['email']; ?></p>
       </div>
 
     </section>
@@ -228,65 +207,7 @@
     
 
    
-    <footer class="ftco-footer ftco-bg-dark ftco-section">
-      <div class="container">
-        <div class="row mb-5">
-          <div class="col-md">
-            <div class="ftco-footer-widget mb-4">
-              <h2 class="ftco-heading-2">ติดต่อเรา</h2>
-              <p>วิทยาลัยเทคโนโลยีสยามบริหารธุรกิจ</p>
-              <p>SBAC สะพานไหม่</p>
-              <p>6/559 ซ.พหลโยธิน ถ.พหลโยธิน</p>
-              <p>เขตสายไหม กรุงเทพฯ 10220</p>
-              <ul class="ftco-footer-social list-unstyled float-md-left float-lft">
-                <li class="ftco-animate"><a href="https://www.facebook.com/sbacsaphanmai/"><span class="icon-facebook"></span></a></li>
-                <li class="ftco-animate"><a href="#"><span class="icon-mail_outline"></span></a></li>
-              </ul>
-            </div>
-          </div>
-          <div class="col-md">
-             <div class="ftco-footer-widget mb-4">
-              <h2 class="ftco-heading-2">Quick Links</h2>
-              <ul class="list-unstyled">
-                <li><a href="#" class="py-2 d-block">Home</a></li>
-                <li><a href="#" class="py-2 d-block">About</a></li>
-                <li><a href="#" class="py-2 d-block">Services</a></li>
-                <li><a href="#" class="py-2 d-block">Portfolio</a></li>
-                <li><a href="#" class="py-2 d-block">Contact</a></li>
-                <li><a href="#" class="py-2 d-block">Privacy</a></li>
-              </ul>
-            </div>
-          </div>
-          <div class="col-md">
-             <div class="ftco-footer-widget mb-4">
-              <h2 class="ftco-heading-2">About SBAC</h2>
-              <p>
-                 Accredited by Royal Award Academy and Asia Pacific Accreditation and Certification Commission.</p>
-            </div>
-          </div>
-          <div class="col-md"style="display:none;">
-            <div class="ftco-footer-widget mb-4">
-              <h2 class="ftco-heading-2">Newsletter</h2>
-              <p>Far far away, behind the word mountains, far from the countries.</p>
-              <form action="#" class="subscribe-form">
-                <div class="form-group">
-                  <span class="icon icon-paper-plane"></span>
-                  <input type="text" class="form-control" placeholder="Subscribe">
-                </div>
-              </form>
-            </div>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-md-12 text-center">
-
-            <p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-  Copyright &copy;<script>document.write(new Date().getFullYear());</script> sbac.ac.th All Right Reserved
-  <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
-          </div>
-        </div>
-      </div>
-    </footer>
+    <?php require "footer.php" ?>
   
 
   <!-- loader -->
