@@ -8956,5 +8956,9 @@
  }
  .tablewhite{
   background-color:  white;
+  border: solid 1px black;
  }
-  
+.reporttext{
+  text-align: center;
+  width: 100%;
+}

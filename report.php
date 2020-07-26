@@ -46,37 +46,77 @@
         </div>
         <div class="row">
             <div class="col-md-12">
-              <h1>Report</h1>
+              <h1 class="reporttext">Report</h1>
             </div>
         </div>
-        <div class="col tableblock">
-          <table class="table">
+        <div class="col ">
+          <table class="table tablewhite">
             <thead>
               <tr>
                 <th scope="col">#</th>
-                <th scope="col">First</th>
-                <th scope="col">Last</th>
-                <th scope="col">Handle</th>
+                <th scope="col">NO.</th>
+                <th scope="col">First-Last</th>
+                <th scope="col">เลขที่บัญชี</th>
+                <th scope="col">จำนวนเงิน</th>
+                <th scope="col">ตรวจสอบ</th>
               </tr>
             </thead>
             <tbody>
               <tr>
                 <th scope="row">1</th>
-                <td>Mark</td>
-                <td>Otto</td>
-                <td>@mdo</td>
+                <td>23</td>
+                <td>Yannawut tintalab</td>
+                <td>8687270663033</td>
+                <td>200<span>$</span></td>
+                <td> <input type="checkbox"> <input type="checkbox"> </td>
               </tr>
               <tr>
                 <th scope="row">2</th>
                 <td>Jacob</td>
                 <td>Thornton</td>
                 <td>@fat</td>
+                <td>200<span>$</span></td>
+                <td> <input type="checkbox"> <input type="checkbox"> </td>
               </tr>
               <tr>
                 <th scope="row">3</th>
                 <td>Larry</td>
                 <td>the Bird</td>
                 <td>@twitter</td>
+                <td>200<span>$</span></td>
+                <td> <input type="checkbox"> <input type="checkbox"> </td>
+              </tr>
+              <tr>
+                <th scope="row">3</th>
+                <td>Larry</td>
+                <td>the Bird</td>
+                <td>@twitter</td>
+                <td>200<span>$</span></td>
+                <td> <input type="checkbox"> <input type="checkbox"> </td>
+              </tr>
+              <tr>
+                <th scope="row">3</th>
+                <td>Larry</td>
+                <td>the Bird</td>
+                <td>@twitter</td>
+                <td>200<span>$</span></td>
+                <td> <input type="checkbox"> <input type="checkbox"> </td>
+              </tr>
+              <tr>
+                <th scope="row">3</th>
+                <td>Larry</td>
+                <td>the Bird</td>
+                <td>@twitter</td>
+                <td>200<span>$</span></td>
+                <td> <input type="checkbox"> <input type="checkbox"> </td>
+              </tr>
+              <tr>
+                <th scope="row">3</th>
+                <td>Larry</td>
+                <td>the Bird</td>
+                <td>@twitter</td>
+                <td>200<span>$</span></td>
+                <td> <input type="checkbox"> <input type="checkbox"> </td>
               </tr>
             </tbody>
           </table>
