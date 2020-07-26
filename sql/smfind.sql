@@ -33,7 +33,7 @@ Time TIME NOT NULL
 );
 
 create table member_account(
-AccountID INT(10) primary key,
+AccountID INT(10) primary key AUTO_INCREMENT,
 Account_number INT(50),
 Bankbook INT(50),
 Account_balance FLOAT(10),
@@ -42,7 +42,7 @@ foreign key(MemberID) references Member(MemberID)
 );
 
 CREATE TABLE member_trans(
-TransID INT(10) NOT NULL primary key,
+TransID INT(10) NOT NULL primary key AUTO_INCREMENT,
 Amount FLOAT(10) NOT NULL,
 Date DATE NOT NULL,
 Time TIME NOT NULL,
