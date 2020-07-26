@@ -68,7 +68,7 @@
                 <td>Yannawut tintalab</td>
                 <td>8687270663033</td>
                 <td>200<span>$</span></td>
-                <td> <input type="checkbox"> <input type="checkbox"> </td>
+                <td> <input type="checkbox" id="validate"> <input type="checkbox"  id="validate">  </td>
               </tr>
               <tr>
                 <th scope="row">2</th>
@@ -76,7 +76,7 @@
                 <td>Thornton</td>
                 <td>@fat</td>
                 <td>200<span>$</span></td>
-                <td> <input type="checkbox"> <input type="checkbox"> </td>
+                <td> <input type="checkbox" id="validate"> <input type="checkbox"  id="validate">  </td>
               </tr>
               <tr>
                 <th scope="row">3</th>
@@ -84,7 +84,7 @@
                 <td>the Bird</td>
                 <td>@twitter</td>
                 <td>200<span>$</span></td>
-                <td> <input type="checkbox"> <input type="checkbox"> </td>
+                <td> <input type="checkbox" id="validate"> <input type="checkbox"  id="validate">  </td>
               </tr>
               <tr>
                 <th scope="row">3</th>
@@ -92,7 +92,7 @@
                 <td>the Bird</td>
                 <td>@twitter</td>
                 <td>200<span>$</span></td>
-                <td> <input type="checkbox"> <input type="checkbox"> </td>
+                <td> <input type="checkbox" id="validate"> <input type="checkbox"  id="validate">  </td>
               </tr>
               <tr>
                 <th scope="row">3</th>
@@ -100,7 +100,7 @@
                 <td>the Bird</td>
                 <td>@twitter</td>
                 <td>200<span>$</span></td>
-                <td> <input type="checkbox"> <input type="checkbox"> </td>
+                <td> <input type="checkbox" id="validate"> <input type="checkbox"  id="validate">  </td>
               </tr>
               <tr>
                 <th scope="row">3</th>
@@ -108,7 +108,7 @@
                 <td>the Bird</td>
                 <td>@twitter</td>
                 <td>200<span>$</span></td>
-                <td> <input type="checkbox"> <input type="checkbox"> </td>
+                <td> <input type="checkbox" id="validate"> <input type="checkbox"  id="validate">  </td>
               </tr>
               <tr>
                 <th scope="row">3</th>
@@ -116,7 +116,7 @@
                 <td>the Bird</td>
                 <td>@twitter</td>
                 <td>200<span>$</span></td>
-                <td> <input type="checkbox"> <input type="checkbox"> </td>
+                <td> <input type="checkbox" id="validate"> <input type="checkbox"  id="validate">  </td>
               </tr>
             </tbody>
           </table>
