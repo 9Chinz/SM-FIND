@@ -8282,7 +8282,7 @@
   .mfp-with-zoom .mfp-container,
   .mfp-with-zoom.mfp-bg {
     opacity: 0;
-    -webkit-backface-visibility: hidden;
+    
     -webkit-transition: all 0.3s ease-out;
     -moz-transition: all 0.3s ease-out;
     -o-transition: all 0.3s ease-out;
@@ -8960,15 +8960,38 @@
   border-radius: 5px;
  }
 .reporttext{
+  
   text-align: center;
   width: 100%;
 }
 .headerreport{
   margin-top: 5%;
-  margin-bottom: 10%;
+}
+.headerreport::after{
+  content: "";
+    background-color: black;
+    
+    display: block;
+    margin: 0 auto;
+    height: 2px;
+    width: 90%;
+}
+.studentsum{
+  width: 100%;
+  max-height: 500px;
+  margin: 10% auto;
+  margin-bottom: 5%;
+  display: inline-block;
+ margin: 5% 5%;
+padding-left: 7%;
 }
 .allstudent{
+  height: 100%;
+  float: left;
+  width: 30%;
+  margin-left: 2px;
   background-color: white;
   border-radius: 10px;
   border: 1px solid #CCCBCB ;
+  text-align: center;
 }

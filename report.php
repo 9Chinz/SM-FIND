@@ -46,28 +46,30 @@
         </div>
         <div class="row headerreport">
             <div class="col-md-6">
-              <h1 class="reporttext">Report</h1>
+              <h1 class="reporttext">Classroom <span>ปวส 2/7</span></h1>
             </div>
             <div class="col-md-6">
-              <h1 class="reporttext">Report</h1>
+              <h1 class="reporttext">วดป</h1>
             </div>
         </div>
         <div class="row">
+        <div class=" studentsum">
           <div class="col-md-4 allstudent">
           <h1>นักศึกษาทั้งหมด</h1>
           <h1>300 <span>คน</span></h1>
           </div>
            
-        <div class="col-md-4 studentend">
+        <div class="col-md-4  allstudent">
         <h1>นักศึกษาที่ฝากเเล้ว</h1>
         <h1>50 <span>คน</span></h1>
         </div>
        
-        <div class="col-md-4 sum">
+        <div class="col-md-4  allstudent">
         <h1>ยอดรวม</h1>
         <h1>200000 <span>บาท</span></h1>
         </div>
-     
+     </div>
+     </div>
       
 
         <div class="col ">
