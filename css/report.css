@@ -63,7 +63,13 @@
     line-height: 1.5;
     color: #212529;
     text-align: left;
-    background-color: #fff; }
+    background: rgb(255,100,100);
+    background: linear-gradient(45deg, rgba(255,100,100,1) 7%, rgba(255,170,100,1) 73%);  
+    background: -moz-linear-gradient(45deg, rgba(255,100,100,1) 7%, rgba(255,170,100,1) 73%);
+    background: -webkit-linear-gradient(45deg, rgba(255,100,100,1) 7%, rgba(255,170,100,1) 73%);
+    background: -o-linear-gradient(45deg, rgba(255,100,100,1) 7%, rgba(255,170,100,1) 73%);
+    background: -ms-linear-gradient(45deg, rgba(255,100,100,1) 7%, rgba(255,170,100,1) 73%);
+    }
   
   [tabindex="-1"]:focus {
     outline: 0 !important; }
@@ -7285,12 +7291,16 @@
   
   body {
     font-family: "Work Sans", Arial, sans-serif;
-    background: #fff;
     font-size: 16px;
     line-height: 1.8;
     font-weight: 300;
-    color: #8b8b92; }
-  
+    color: #8b8b92; 
+    background: rgb(255,100,100);
+        background: linear-gradient(45deg, rgba(255,100,100,1) 7%, rgba(255,170,100,1) 73%);  
+        background: -moz-linear-gradient(45deg, rgba(255,100,100,1) 7%, rgba(255,170,100,1) 73%);
+        background: -webkit-linear-gradient(45deg, rgba(255,100,100,1) 7%, rgba(255,170,100,1) 73%);
+        background: -o-linear-gradient(45deg, rgba(255,100,100,1) 7%, rgba(255,170,100,1) 73%);
+        background: -ms-linear-gradient(45deg, rgba(255,100,100,1) 7%, rgba(255,170,100,1) 73%);}
   a {
     -webkit-transition: .3s all ease;
     -o-transition: .3s all ease;
@@ -7511,8 +7521,8 @@
       min-height: 800px;
       position: relative; }
       .home-slider .slider-item .overlay {
-        height: 120%;
-        
+        height: 200%;
+        max-height: 200%;
         top: 0;
         left: 0;
         right: 0;
@@ -8989,9 +8999,41 @@ padding-left: 7%;
   height: 100%;
   float: left;
   width: 30%;
-  margin-left: 2px;
+  margin-left: 10px;
   background-color: white;
   border-radius: 10px;
   border: 1px solid #CCCBCB ;
   text-align: center;
 }
+
+@media (max-width: 768px) {
+}
+@media (max-width: 992px) {
+   .allstudent h1{
+     font-size: 30px;
+   }
+  }
+@media (max-width: 1200px) {
+
+   }
+   @media (max-width: 1636px){
+   
+   }
+   @media (max-width: 576px) {
+
+    .allstudent{
+      float: none;
+      max-width: 576px;
+      width: 100%;
+     height: 30%;
+     margin-bottom: 20px;
+    }
+    .studentsum{
+      padding-left: 0px;
+      margin-left: 0;
+    }
+    .table-responsive{
+      padding-left: 0;
+     }
+   }
+

@@ -33,7 +33,7 @@
  
     <section class="home-slider ftco-degree-bg">
       <div class="slider-item">
-        <div class="overlay">
+        <div >
           <?php require "./navbar.php"; ?>
           
           <div class="container">
@@ -72,7 +72,7 @@
      </div>
       
 
-        <div class="col ">
+        <div class="col table-responsive ">
           <table class="table tablewhite">
             <thead>
               <tr>
