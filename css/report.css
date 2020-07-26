@@ -8957,8 +8957,18 @@
  .tablewhite{
   background-color:  white;
   border: solid 1px black;
+  border-radius: 5px;
  }
 .reporttext{
   text-align: center;
   width: 100%;
+}
+.headerreport{
+  margin-top: 5%;
+  margin-bottom: 10%;
+}
+.allstudent{
+  background-color: white;
+  border-radius: 10px;
+  border: 1px solid #CCCBCB ;
 }
