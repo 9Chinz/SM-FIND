@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-if(isset($_POST['signin'])){
+if (isset($_POST['signin'])) {
     //? include file
     require 'connect.php';
     require "log.php";
@@ -22,8 +22,8 @@ if(isset($_POST['signin'])){
     $result = mysqli_query($conn, $sql) or die(mysqli_error($conn));
     $row = mysqli_fetch_array($result);
 
-    if($row){
-        $event = "รหัส ".$row['MemberCode']." ".$row['Firstname']." has login successful !";
+    if ($row) {
+        $event = "รหัส " . $row['MemberCode'] . " " . $row['Firstname'] . " has login successful !";
         log_member($event, $row['MemberID']);
         $id = $row['MemberID'];
         $account_sql = mysqli_query($conn, "SELECT * FROM member_account WHERE MemberID = '$id'; ");
@@ -31,23 +31,25 @@ if(isset($_POST['signin'])){
         //! select data save into session to use it another page
         $_SESSION['id'] = $row['MemberID'];
         $_SESSION['code'] = $row['MemberCode'];
-        $_SESSION['username'] = $row['Firstname']." ".$row['Lastname'];
+        $_SESSION['username'] = $row['Firstname'] . " " . $row['Lastname'];
         $_SESSION['firstname'] = $row['Firstname'];
         $_SESSION['lastname'] = $row['Lastname'];
         $_SESSION['dept'] = $row['Dept'];
-        $_SESSION['level'] = $row['Section'].".".$row['Class']."/".$row['Room'];
+        $_SESSION['level'] = $row['Section'] . "." . $row['Class'] . "/" . $row['Room'];
         $_SESSION['tel'] = $row['Tel'];
         $_SESSION['email'] = $username;
         $_SESSION['userlevel'] = $row['Userlevel'];
         $_SESSION['specialStatus'] = $row['SpecialStatus'];
         $_SESSION['hasLogin'] = true;
+        //! error data == null
         $_SESSION['accountNumber'] = $accountRow['Account_number'];
         $_SESSION['Bankbook'] = $accountRow['Bankbook'];
         $_SESSION['balance'] = $accountRow['Account_balance'];
 
+
         echo "<script type='text/javascript'>alert('login sucessful')</script>";
         echo '<meta http-equiv="refresh" content="1; url=../about.php"> ';
-    }else {
+    } else {
         echo "<script type='text/javascript'>alert('login fail')</script>";
         echo '<meta http-equiv="refresh" content="1; url=../index.php"> ';
     }
