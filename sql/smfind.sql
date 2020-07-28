@@ -50,3 +50,14 @@ AccountID INT(10) NOT NULL,
 Status INT(10) NOT NULL,
 foreign key(AccountID) references member_account(AccountID)
 );
+
+CREATE TABLE create_account_form(
+FormID INT(10) primary key AUTO_INCREMENT,
+Firstname VARCHAR(255),
+Lastname VARCHAR(255),
+Email VARCHAR(100),
+begin_cash FLOAT(10),
+MemberID INT(10),
+Status INT(10),
+foreign key(MemberID) references Member(MemberID)
+)
