@@ -55,7 +55,7 @@ if (isset($_POST['signin'])) {
         }
         
         echo "<script type='text/javascript'>alert('login sucessful')</script>";
-        echo '<meta http-equiv="refresh" content="10; url=../about.php"> ';
+        echo '<meta http-equiv="refresh" content="1; url=../about.php"> ';
     } else {
         echo "<script type='text/javascript'>alert('login fail')</script>";
         echo '<meta http-equiv="refresh" content="1; url=../index.php"> ';
