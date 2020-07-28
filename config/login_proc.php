@@ -23,12 +23,12 @@ if (isset($_POST['signin'])) {
     $row = mysqli_fetch_array($result);
 
     if ($row) {
+        //!log part
         $event = "รหัส " . $row['MemberCode'] . " " . $row['Firstname'] . " has login successful !";
         log_member($event, $row['MemberID']);
-        $id = $row['MemberID'];
-        $account_sql = mysqli_query($conn, "SELECT * FROM member_account WHERE MemberID = '$id'; ");
-        $accountRow = mysqli_fetch_array($account_sql);
+        
         //! select data save into session to use it another page
+        $id = $row['MemberID'];
         $_SESSION['id'] = $row['MemberID'];
         $_SESSION['code'] = $row['MemberCode'];
         $_SESSION['username'] = $row['Firstname'] . " " . $row['Lastname'];
@@ -41,14 +41,21 @@ if (isset($_POST['signin'])) {
         $_SESSION['userlevel'] = $row['Userlevel'];
         $_SESSION['specialStatus'] = $row['SpecialStatus'];
         $_SESSION['hasLogin'] = true;
-        //! error data == null
-        $_SESSION['accountNumber'] = $accountRow['Account_number'];
-        $_SESSION['Bankbook'] = $accountRow['Bankbook'];
-        $_SESSION['balance'] = $accountRow['Account_balance'];
 
+        //! query account of member
+        $account_sql = mysqli_query($conn, "SELECT * FROM member_account WHERE MemberID = '$id'; ");
+        $accountRow = mysqli_fetch_array($account_sql);
 
+        //! check account null
+        if(!empty($accountRow)){
+            $_SESSION['accountNumber'] = $accountRow['Account_number'];
+            $_SESSION['Bankbook'] = $accountRow['Bankbook'];
+            $_SESSION['balance'] = $accountRow['Account_balance'];
+            $_SESSION['hasAccount'] = true;
+        }
+        
         echo "<script type='text/javascript'>alert('login sucessful')</script>";
-        echo '<meta http-equiv="refresh" content="1; url=../about.php"> ';
+        echo '<meta http-equiv="refresh" content="10; url=../about.php"> ';
     } else {
         echo "<script type='text/javascript'>alert('login fail')</script>";
         echo '<meta http-equiv="refresh" content="1; url=../index.php"> ';
