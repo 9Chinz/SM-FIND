@@ -19,13 +19,20 @@
               <a class="dropdown-item" href="#">Withdraw</a>
             </div>
           </li>
+
+          <?php 
+          //? validate user
+          $validate = $_SESSION['userlevel'] != "student" || $_SESSION['specialStatus'] == "treasurer"
+          || $_SESSION['specialStatus'] == "sub-headroom" || $_SESSION['specialStatus'] == "headroom";
+          if($validate){ ?>
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="room.html" id="dropdown04" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">extension</a>
             <div class="dropdown-menu" aria-labelledby="dropdown04">
               <a class="dropdown-item" href="report.php">รายงานเงินฝาก</a>
             </div>
           </li>
-
+          <?php } ?>
+          
           <li class="nav-item"><a href="./config/logout.php" class="nav-link">LOGOUT</a></li>
         </ul>
       </div>
