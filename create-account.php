@@ -61,7 +61,7 @@ session_start();
           <div class="col-md-6 pr-md-5">
             <form action="./backend-file/add-account.php" method="POST">
               <div class="form-group">
-                <input type="text" class="form-control" name="chinnapat" placeholder="ชื่อจริง">
+                <input type="text" class="form-control" name="firstname" placeholder="ชื่อจริง">
               </div>
               <div class="form-group">
                 <input type="text" class="form-control" name="lastname" placeholder="นามสกุล">
