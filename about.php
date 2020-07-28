@@ -50,7 +50,10 @@
               <p class="breadcrumbs"><span class="mr-2"><a href="index.php">Home</a></span> <span>Profile</span></p>
               <h1 class="mb-3 bread">welcome</h1>
               <h1 class="mb-3 fixfont"><?php echo $_SESSION['username']; ?></h1>
-              <h1 class="mb-3 bread"><?php echo $_SESSION['balance']; ?> ฿</h1>
+              <?php if(isset($_SESSION['hasAccount'])){ ?>
+                <h1 class="mb-3 bread"><?php echo $_SESSION['accountNumber']; ?></h1>
+                <h1 class="mb-3 bread"><?php echo $_SESSION['balance']; ?> ฿</h1>
+              <?php } ?>
             </div>
           </div>
         </div>
