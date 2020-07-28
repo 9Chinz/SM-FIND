@@ -59,7 +59,7 @@ session_start();
         </div>
         <div class="row block-9">
           <div class="col-md-6 pr-md-5">
-            <form action="./backend-file/add-account.php" method="POST">
+            <form action="./config/create-account-proc.php" method="POST">
               <div class="form-group">
                 <input type="text" class="form-control" name="firstname" placeholder="ชื่อจริง">
               </div>
