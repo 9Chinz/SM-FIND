@@ -55,6 +55,7 @@ if (isset($_POST['btnAddUser'])) {
         <select name="userLevel">
             <option value="student">นักเรียน</option>
             <option value="teacher">อาจารย์</option>
+            <option value="teller">พนักงานฝาก-ถอน</option>
             <option value="bank-account">พนักงานบัญชี</option>
         </select>
         <select name="specialStatus">
