@@ -51,7 +51,7 @@
               <h1 class="mb-3 bread">welcome</h1>
               <h1 class="mb-3 fixfont"><?php echo $_SESSION['username']; ?></h1>
               <?php if(isset($_SESSION['hasAccount'])){ ?>
-                <h1 class="mb-3 bread"><?php echo $_SESSION['accountNumber']; ?></h1>
+                <h1 class="mb-3 bread">เลขบัญชี  <?php echo $_SESSION['accountNumber']; ?></h1>
                 <h1 class="mb-3 bread"><?php echo $_SESSION['balance']; ?> ฿</h1>
               <?php } ?>
             </div>
