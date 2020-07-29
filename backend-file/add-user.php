@@ -60,6 +60,9 @@ if (isset($_POST['btnAddUser'])) {
         </select>
         <select name="specialStatus">
             <option value="">ไม่มี</option>
+            <option value="treasurer">เหรัญญิก</option>
+            <option value="sub-headroom">รองหัวหน้าห้อง</option>
+            <option value="headroom">หัวหน้าห้อง</option>
         </select>
         <input type="submit" name="btnAddUser" value="submit">
     </form>
