@@ -1,6 +1,11 @@
 <?php
 require './config/connect.php';
 session_start();
+if(!isset($_SESSION['hasLogin'])){
+  echo "<script>alert('please login !')</script>";
+  echo '<meta http-equiv="refresh" content="1; url=./login.php"> ';
+  exit();
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
