@@ -54,6 +54,7 @@ if (isset($_POST['signin'])) {
             $_SESSION['accountNumber'] = $accountRow['Account_number'];
             $_SESSION['Bankbook'] = $accountRow['Bankbook'];
             $_SESSION['balance'] = $accountRow['Account_balance'];
+            $_SESSION['accountID'] = $accountRow['AccountID'];
             $_SESSION['hasAccount'] = true;
         }
         if ($_SESSION['userlevel'] != "teller" and $_SESSION['userlevel'] != "bank-account") {
