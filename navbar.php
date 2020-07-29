@@ -8,15 +8,17 @@
 
       <div class="collapse navbar-collapse" id="ftco-nav">
         <ul class="navbar-nav ml-auto">
-          <li class="nav-item"><a href="index.php" class="nav-link">Home</a></li>
+          <li class="nav-item"><a href="index.php" class="nav-link">หน้าแรก</a></li>
           <?php if($_SESSION['userlevel'] != "teller" AND $_SESSION['userlevel'] != "bank-account"){ ?>
-          <li class="nav-item active"><a href="about.php" class="nav-link">My profile</a></li>
+          <li class="nav-item active"><a href="about.php" class="nav-link">โปรไฟล์</a></li>
           <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="room.html" id="dropdown04" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">service</a>
+            <a class="nav-link dropdown-toggle" href="room.html" id="dropdown04" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">บริการ</a>
             <div class="dropdown-menu" aria-labelledby="dropdown04">
-              <a class="dropdown-item" href="create-account.php">Create account</a>
-              <a class="dropdown-item" href="deposit.php">Deposit</a>
-              <a class="dropdown-item" href="#">Withdraw</a>
+              <?php if(!isset($_SESSION['hasAccount'])){ ?>
+              <a class="dropdown-item" href="create-account.php">เปิดบัญชี</a>
+              <?php } ?>
+              <a class="dropdown-item" href="deposit.php">ฝาก</a>
+              <a class="dropdown-item" href="#">ถอน</a>
             </div>
           </li>
           <?php } ?>
@@ -29,7 +31,7 @@
           $validate2 = $_SESSION['userlevel'] == "teller" AND $_SESSION['userlevel'] == "bank-account";
           if($validate2){ ?>
           <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="room.html" id="dropdown04" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">extension</a>
+            <a class="nav-link dropdown-toggle" href="room.html" id="dropdown04" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">ส่วนเสริม</a>
             <div class="dropdown-menu" aria-labelledby="dropdown04">
               <a class="dropdown-item" href="./request-account.php">คำขอร้องการเปิดบัญชี</a>
               <a class="dropdown-item" href="report.php">รายงานเงินฝาก</a>
@@ -37,7 +39,7 @@
           </li>
           <?php }elseif($validate){ ?>
             <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="room.html" id="dropdown04" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">extension</a>
+            <a class="nav-link dropdown-toggle" href="room.html" id="dropdown04" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">ส่วนเสริม</a>
             <div class="dropdown-menu" aria-labelledby="dropdown04">
               <a class="dropdown-item" href="report.php">รายงานเงินฝาก</a>
             </div>
