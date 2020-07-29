@@ -35,6 +35,9 @@ if (isset($_POST['signin'])) {
         $_SESSION['firstname'] = $row['Firstname'];
         $_SESSION['lastname'] = $row['Lastname'];
         $_SESSION['dept'] = $row['Dept'];
+        $_SESSION['section'] = $row['Section'];
+        $_SESSION['class'] = $row['Class'];
+        $_SESSION['room'] = $row['Room'];
         $_SESSION['level'] = $row['Section'] . "." . $row['Class'] . "/" . $row['Room'];
         $_SESSION['tel'] = $row['Tel'];
         $_SESSION['email'] = $username;
