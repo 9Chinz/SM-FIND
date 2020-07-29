@@ -26,14 +26,25 @@
           //? validate user
           $validate = $_SESSION['userlevel'] != "student" || $_SESSION['specialStatus'] == "treasurer"
           || $_SESSION['specialStatus'] == "sub-headroom" || $_SESSION['specialStatus'] == "headroom";
-          if($validate){ ?>
+          $validate2 = $_SESSION['userlevel'] == "teller" AND $_SESSION['userlevel'] == "bank-account";
+          if($validate2){ ?>
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="room.html" id="dropdown04" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">extension</a>
             <div class="dropdown-menu" aria-labelledby="dropdown04">
+              <a class="dropdown-item" href="./request-account.php">คำขอร้องการเปิดบัญชี</a>
               <a class="dropdown-item" href="report.php">รายงานเงินฝาก</a>
             </div>
           </li>
-          <?php } ?>
+          <?php }elseif($validate){ ?>
+            <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="room.html" id="dropdown04" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">extension</a>
+            <div class="dropdown-menu" aria-labelledby="dropdown04">
+              <a class="dropdown-item" href="./request-account.php">คำขอร้องการเปิดบัญชี</a>
+              <a class="dropdown-item" href="report.php">รายงานเงินฝาก</a>
+            </div>
+          </li>
+
+            <?php } ?>
           
           <li class="nav-item"><a href="./config/logout.php" class="nav-link">LOGOUT</a></li>
         </ul>
