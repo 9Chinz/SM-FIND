@@ -59,6 +59,6 @@ Lastname VARCHAR(255),
 Email VARCHAR(100),
 Begin_cash FLOAT(10),
 MemberID INT(10),
-Status INT(10),
+Status INT(10) DEFAULT 0,
 foreign key(MemberID) references Member(MemberID)
 )
