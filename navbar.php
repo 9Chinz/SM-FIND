@@ -9,8 +9,8 @@
       <div class="collapse navbar-collapse" id="ftco-nav">
         <ul class="navbar-nav ml-auto">
           <li class="nav-item"><a href="index.php" class="nav-link">Home</a></li>
+          <?php if($_SESSION['userlevel'] != "teller" AND $_SESSION['userlevel'] != "bank-account"){ ?>
           <li class="nav-item active"><a href="about.php" class="nav-link">My profile</a></li>
-
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="room.html" id="dropdown04" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">service</a>
             <div class="dropdown-menu" aria-labelledby="dropdown04">
@@ -19,6 +19,8 @@
               <a class="dropdown-item" href="#">Withdraw</a>
             </div>
           </li>
+          <?php } ?>
+          
 
           <?php 
           //? validate user
