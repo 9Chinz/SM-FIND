@@ -34,8 +34,8 @@ Time TIME NOT NULL
 
 create table member_account(
 AccountID INT(10) primary key AUTO_INCREMENT,
-Account_number INT(50),
-Bankbook INT(50),
+Account_number VARCHAR(50),
+Bankbook VARCHAR(50),
 Account_balance FLOAT(10),
 MemberID INT(10),
 foreign key(MemberID) references Member(MemberID)
