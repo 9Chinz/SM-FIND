@@ -26,7 +26,7 @@ if (isset($_POST['signin'])) {
         //!log part
         $event = "รหัส " . $row['MemberCode'] . " " . $row['Firstname'] . " has login successful !";
         log_member($event, $row['MemberID']);
-        
+
         //! select data save into session to use it another page
         $id = $row['MemberID'];
         $_SESSION['id'] = $row['MemberID'];
@@ -47,15 +47,19 @@ if (isset($_POST['signin'])) {
         $accountRow = mysqli_fetch_array($account_sql);
 
         //! check account null
-        if(!empty($accountRow)){
+        if (!empty($accountRow)) {
             $_SESSION['accountNumber'] = $accountRow['Account_number'];
             $_SESSION['Bankbook'] = $accountRow['Bankbook'];
             $_SESSION['balance'] = $accountRow['Account_balance'];
             $_SESSION['hasAccount'] = true;
         }
-        
-        echo "<script type='text/javascript'>alert('login sucessful')</script>";
-        echo '<meta http-equiv="refresh" content="1; url=../about.php"> ';
+        if ($_SESSION['userlevel'] != "teller" and $_SESSION['userlevel'] != "bank-account") {
+            echo "<script type='text/javascript'>alert('login sucessful')</script>";
+            echo '<meta http-equiv="refresh" content="1; url=../about.php"> ';
+        }else{
+            echo "<script type='text/javascript'>alert('login sucessful')</script>";
+            echo '<meta http-equiv="refresh" content="1; url=../index.php"> ';
+        }
     } else {
         echo "<script type='text/javascript'>alert('login fail')</script>";
         echo '<meta http-equiv="refresh" content="1; url=../index.php"> ';
