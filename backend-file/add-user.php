@@ -42,10 +42,12 @@ if (isset($_POST['btnAddUser'])) {
             <option value="CG">ซีจี</option>
             <option value="AC">บัญชี</option>
             <option value="BC">คอมธุร</option>
+            <option value="none">ไม่มี</option>
         </select>
         <select name="section">
             <option value="lower">ปวช</option>
             <option value="upper">ปวส</option>
+            <option value="none">ไม่มี</option>
         </select>
         <input type="number" name="class" placeholder="ชั้น" required>
         <input type="number" name="room" placeholder="ห้อง" required>
