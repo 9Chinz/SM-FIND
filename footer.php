@@ -9,7 +9,7 @@
               <p>6/559 ซ.พหลโยธิน ถ.พหลโยธิน</p>
               <p>เขตสายไหม กรุงเทพฯ 10220</p>
               <ul class="ftco-footer-social list-unstyled float-md-left float-lft">
-                <li class="ftco-animate"><a href="https://www.facebook.com/sbacsaphanmai/"><span class="icon-facebook"></span></a></li>
+                <li class="ftco-animate"><a href="https://www.facebook.com/SBACSIT/" target="_blank"><span class="icon-facebook"></span></a></li>
                 <li class="ftco-animate"><a href="#"><span class="icon-mail_outline"></span></a></li>
               </ul>
             </div>
