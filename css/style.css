@@ -9129,7 +9129,7 @@ box-shadow: 5px 5px 5px  #B9B9B9 ;
    @media (max-width: 1636px){
     .profileblock {
     
-      margin-top: 5%;
+      width: 50%;
     }
    }
    @media (max-width: 576px) {
