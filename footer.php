@@ -49,9 +49,9 @@
         <div class="row">
           <div class="col-md-12 text-center">
 
-            <p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+            <p>
   Copyright &copy;<script>document.write(new Date().getFullYear());</script> sbac.ac.th All Right Reserved
-  <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
+  </p>
           </div>
         </div>
       </div>
