@@ -94,15 +94,15 @@ if (!isset($_SESSION['hasLogin'])) {
         $section = $_SESSION['section'];
         $class = $_SESSION['class'];
         $room = $_SESSION['room'];
-        if($_SESSION['specialStatus'] == "treasurer"){
+        if ($_SESSION['specialStatus'] == "treasurer") {
           $status = 0;
-        }elseif($_SESSION['specialStatus'] == "sub-headroom" || $_SESSION['specialStatus'] == "headroom"){
+        } elseif ($_SESSION['specialStatus'] == "sub-headroom" || $_SESSION['specialStatus'] == "headroom") {
           $status = 1;
-        }elseif($_SESSION['specialStatus'] == "teacher"){
+        } elseif ($_SESSION['specialStatus'] == "teacher") {
           $status = 2;
-        }elseif($_SESSION['specialStatus'] == "teller"){
+        } elseif ($_SESSION['specialStatus'] == "teller") {
           $status = 3;
-        }elseif($_SESSION['specialStatus'] == "bank-account"){
+        } elseif ($_SESSION['specialStatus'] == "bank-account") {
           $status = 4;
         }
         $sql = "SELECT member_trans.TransID, member.MemberCode, member.Firstname, member.Lastname, member_account.Account_number, member_trans.Date, member_trans.Amount, member_trans.Status
@@ -123,6 +123,7 @@ if (!isset($_SESSION['hasLogin'])) {
                 <th scope="col">เลขที่บัญชี</th>
                 <th scope="col">จำนวนเงิน</th>
                 <th scope="col">ตรวจสอบ</th>
+                <th scope="col">ตรวจสอบ</th>
               </tr>
             </thead>
             <tbody>
@@ -131,15 +132,19 @@ if (!isset($_SESSION['hasLogin'])) {
               $n = 1;
               if ($num > 0) {
                 while ($row = mysqli_fetch_array($query)) { ?>
-                  <tr>
-                    <th scope="row"><?php echo $n; ?></th>
-                    <td><?php echo $row['MemberCode']; ?></td>
-                    <td><?php echo $row['Firstname']." ".$row['Lastname']; ?></td>
-                    <td><?php echo $row['Account_number']; ?></td>
-                    <td><?php echo $row['Amount']; ?><span>฿</span></td>
-                    <td> <input type="checkbox" id="validate" name="fooby[1][]"> <input type="checkbox" id="validate" name="fooby[1][]"> </td>
-                  </tr>
-                <?php $n++; }
+                  <form action="./config/report-process.php" method="GET">
+                    <tr>
+                      <th scope="row"><?php echo $n; ?></th>
+                      <td><?php echo $row['MemberCode']; ?></td>
+                      <td><?php echo $row['Firstname'] . " " . $row['Lastname']; ?></td>
+                      <td><?php echo $row['Account_number']; ?></td>
+                      <td><?php echo $row['Amount']; ?><span>฿</span></td>
+                      <td><input type="submit" value="ยอมรับ" class="btn btn-success"></td>
+                      <td><input type="submit" value="ปฏิเสธ" class="btn btn-danger"></td>
+                    </tr>
+                  </form>
+                <?php $n++;
+                }
               } else { ?>
                 <tr>
                   <th scope="row">-</th>
@@ -147,7 +152,8 @@ if (!isset($_SESSION['hasLogin'])) {
                   <td>-</td>
                   <td>-</td>
                   <td>-<span>-</span></td>
-                  <td> <input type="checkbox" id="validate" name="fooby[1][]"> <input type="checkbox" id="validate" name="fooby[1][]"> </td>
+                  <td>submit</td>
+                  <td>submit</td>
                 </tr>
               <?php } ?>
             </tbody>

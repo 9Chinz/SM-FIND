@@ -73,7 +73,7 @@ $result = mysqli_fetch_array($query);
           <div class="col-md-6 pr-md-5">
             <form action="./config/request-page-proc.php" method="POST">
             <div class="form-group">
-                <input type="number" class="form-control" name="code" value="<?php echo $result['Code']; ?>" placeholder="รหัสนักศึกษา">
+                <input type="text" class="form-control" name="code" value="<?php echo $result['Code']; ?>" placeholder="รหัสนักศึกษา">
               </div>
               <div class="form-group">
                 <input type="text" class="form-control" name="name" value="<?php echo $result['Firstname']." ".$result['Lastname']; ?>" placeholder="ชื่อ-นามสกุล">
@@ -88,7 +88,7 @@ $result = mysqli_fetch_array($query);
                 <input type="text" class="form-control" name="bankBook" placeholder="เลขสมุดบัญชี">
               </div>
               <div class="form-group">
-                <input type="number" step=0.01 class="form-control" value="<?php echo $result['Begin_cash']; ?>" name="cash" placeholder="จำนวนเงินที่ฝากขั้นต้น" min="100">
+                <input type="text" step=0.01 class="form-control" value="<?php echo $result['Begin_cash']; ?>" name="cash" placeholder="จำนวนเงินที่ฝากขั้นต้น" min="100">
               </div>
               <div class="form-group">
                 <input type="submit" name="btn-accept" value="ยืนยัน" class="btn btn-success py-3 px-5">

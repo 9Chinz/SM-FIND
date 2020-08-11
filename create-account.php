@@ -67,7 +67,7 @@ if(!isset($_SESSION['hasLogin'])){
           <div class="col-md-6 pr-md-5">
             <form action="./config/create-account-proc.php" method="POST">
             <div class="form-group">
-                <input type="number" class="form-control" name="code" placeholder="รหัสนักศึกษา">
+                <input type="text" class="form-control" name="code" placeholder="รหัสนักศึกษา">
               </div>
               <div class="form-group">
                 <input type="text" class="form-control" name="firstname" placeholder="ชื่อจริง">
@@ -79,7 +79,7 @@ if(!isset($_SESSION['hasLogin'])){
                 <input type="email" class="form-control" name="email" placeholder="email">
               </div>
               <div class="form-group">
-                <input type="number" step=0.01 class="form-control" name="cash" placeholder="ขั้นต่ำ 100 บาท" min="100">
+                <input type="text" class="form-control" name="cash" placeholder="ขั้นต่ำ 100 บาท" min="100">
               </div>
               <div class="form-group">
                 <input type="submit" name="btn-create" value="สมัคร" class="btn btn-primary py-3 px-5">
