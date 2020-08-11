@@ -28,13 +28,15 @@
           //? validate user
           $validate = $_SESSION['userlevel'] != "student" || $_SESSION['specialStatus'] == "treasurer"
           || $_SESSION['specialStatus'] == "sub-headroom" || $_SESSION['specialStatus'] == "headroom";
-          $validate2 = $_SESSION['userlevel'] == "teller" AND $_SESSION['userlevel'] == "bank-account";
+          $validate2 = $_SESSION['userlevel'] == "teller" || $_SESSION['userlevel'] == "bank-account";
           if($validate2){ ?>
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="room.html" id="dropdown04" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">ส่วนเสริม</a>
             <div class="dropdown-menu" aria-labelledby="dropdown04">
               <a class="dropdown-item" href="./request-account.php">คำขอร้องการเปิดบัญชี</a>
-              <a class="dropdown-item" href="report.php">รายงานเงินฝาก</a>
+              <!-- หน้า dashboard
+              -->
+              <a class="dropdown-item" href=".php">แดชบอร์ด</a>
             </div>
           </li>
           <?php }elseif($validate){ ?>
