@@ -60,7 +60,7 @@ if (!isset($_SESSION['hasLogin'])) {
             <h1 class="reporttext">Classroom <span><?php echo $_SESSION['level']; ?></span></h1>
           </div>
           <div class="col-md-6">
-            <h1 class="reporttext"><?php echo Date("D/M/Y"); ?></h1>
+            <h1 class="reporttext"><?php echo Date("D d/m/Y"); ?></h1>
           </div>
         </div>
         <div class="row">
@@ -98,13 +98,11 @@ if (!isset($_SESSION['hasLogin'])) {
           $status = 0;
         } elseif ($_SESSION['specialStatus'] == "sub-headroom" || $_SESSION['specialStatus'] == "headroom") {
           $status = 1;
-        } elseif ($_SESSION['specialStatus'] == "teacher") {
+        } elseif ($_SESSION['userlevel'] == "teacher") {
           $status = 2;
-        } elseif ($_SESSION['specialStatus'] == "teller") {
-          $status = 3;
-        } elseif ($_SESSION['specialStatus'] == "bank-account") {
-          $status = 4;
-        }
+        } 
+        //! teller and bank-account move to another page
+        
         $sql = "SELECT member_trans.TransID, member.MemberCode, member.Firstname, member.Lastname, member_account.Account_number, member_trans.Date, member_trans.Amount, member_trans.Status
         FROM member
         INNER JOIN member_account ON  member.MemberID = member_account.MemberID
@@ -132,17 +130,15 @@ if (!isset($_SESSION['hasLogin'])) {
               $n = 1;
               if ($num > 0) {
                 while ($row = mysqli_fetch_array($query)) { ?>
-                  <form action="./config/report-process.php" method="GET">
-                    <tr>
-                      <th scope="row"><?php echo $n; ?></th>
-                      <td><?php echo $row['MemberCode']; ?></td>
-                      <td><?php echo $row['Firstname'] . " " . $row['Lastname']; ?></td>
-                      <td><?php echo $row['Account_number']; ?></td>
-                      <td><?php echo $row['Amount']; ?><span>฿</span></td>
-                      <td><input type="submit" value="ยอมรับ" class="btn btn-success"></td>
-                      <td><input type="submit" value="ปฏิเสธ" class="btn btn-danger"></td>
-                    </tr>
-                  </form>
+                  <tr>
+                    <th scope="row"><?php echo $n; ?></th>
+                    <td><?php echo $row['MemberCode']; ?></td>
+                    <td><?php echo $row['Firstname'] . " " . $row['Lastname']; ?></td>
+                    <td><?php echo $row['Account_number']; ?></td>
+                    <td><?php echo $row['Amount']; ?><span>฿</span></td>
+                    <td><a href="./config/report-process.php?id=<?php echo $row['TransID']; ?>&btn=accept"  class="btn btn-success" >ยอมรับ</a></td>
+                    <td><a href="./config/report-process.php?id=<?php echo $row['TransID']; ?>& btn=reject" class="btn btn-danger">ปฎิเสธ</a></td>
+                  </tr>
                 <?php $n++;
                 }
               } else { ?>
