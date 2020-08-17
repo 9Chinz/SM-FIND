@@ -1,7 +1,11 @@
-$(document).ready(function(){
-    $('a').click (function(){
-        $(this).addclass('active');
-        $('li.list-group.active').removeclass('active');
-        
-    })
-});
+$(function(){
+ 
+(window.jQuery);
+	$(window).on('resize', function () {
+  if ($(window).width() > 768) $('.sidebar').collapse('show')
+})
+$(window).on('resize', function () {
+  if ($(window).width() <= 767) $('.sidebar').collapse('hide')
+})
+
+})
