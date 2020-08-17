@@ -33,7 +33,11 @@ if(isset($_GET['btn'])){
         }
         
     }else{
-        $sql = "UPDATE member_trans SET Status = '0' WHERE TransID = '$id'";
+        if ($_SESSION['specialStatus'] == "treasurer") {
+            $sql = "DELETE FROM member_trans WHERE TransID = '$id' AND Status = 0";
+        }else{
+            $sql = "UPDATE member_trans SET Status = '0' WHERE TransID = '$id'";
+        }
         $query = mysqli_query($conn, $sql) or die(mysqli_error($conn));
         if($query){
             echo "<script>alert('reject successful!')</script>";
