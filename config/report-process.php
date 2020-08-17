@@ -25,7 +25,6 @@ if(isset($_GET['btn'])){
 
         $query = mysqli_query($conn, $sql) or die(mysqli_error($conn));
         if($query){
-            echo "<script>alert('change status successful!')</script>";
             echo '<meta http-equiv="refresh" content="1; url=../report.php"> ';
         }else{
             echo "<script>alert('failed to change status!')</script>";
@@ -40,7 +39,6 @@ if(isset($_GET['btn'])){
         }
         $query = mysqli_query($conn, $sql) or die(mysqli_error($conn));
         if($query){
-            echo "<script>alert('reject successful!')</script>";
             echo '<meta http-equiv="refresh" content="1; url=../report.php"> ';
         }else{
             echo "<script>alert('failed to change status!')</script>";
