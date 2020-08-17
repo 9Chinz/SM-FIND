@@ -1,0 +1,21 @@
+@font-face {
+    font-family:Moon-Bold;
+    src: url(Moon2.0-Bold.otf);
+  }
+  @font-face {
+    font-family: moon-light;
+    src: url(Moon2.0-Light.otf);
+  }
+  @font-face {
+    font-family: moon-regular;
+    src: url(Moon2.0-Regular.otf);
+  }
+  @font-face {
+    font-family: worksanwght;
+    src: url(WorkSans-Italic-VariableFont_wght.ttf);
+  }
+  @font-face {
+    font-family: worksansvariable;
+    src: url(WorkSans-VariableFont_wght.ttf);
+  }
+  
