@@ -6,6 +6,12 @@ if (!isset($_SESSION['hasLogin'])) {
   echo '<meta http-equiv="refresh" content="1; url=./login.php"> ';
   exit();
 }
+
+$dept = $_SESSION['dept'];
+$section = $_SESSION['section'];
+$class = $_SESSION['class'];
+$room = $_SESSION['room'];
+$todayDate = date("Y-m-d");
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -68,7 +74,7 @@ if (!isset($_SESSION['hasLogin'])) {
             <div class="col-md-4 allstudent">
 
               <?php
-              $sql = "SELECT * FROM `member` WHERE Userlevel = 'student'";
+              $sql = "SELECT * FROM `member` WHERE `Userlevel` = 'student' AND `Dept` = '$dept' AND `Section` = '$section' AND `Class` = '$class' AND `Room` = '$room'";
               $result = mysqli_query($conn, $sql) or die(mysqli_error($conn));
               $row = mysqli_num_rows($result);
               ?>
@@ -77,23 +83,41 @@ if (!isset($_SESSION['hasLogin'])) {
               <h1><?php echo $row; ?> <span>คน</span></h1>
             </div>
 
+            <?php
+              $sql = "SELECT mt.TransID, m.MemberCode, m.Firstname, m.Lastname, ma.Account_number, mt.Date, mt.Amount, mt.Status
+              FROM member AS m
+              INNER JOIN member_account AS ma ON  m.MemberID = ma.MemberID
+              INNER JOIN member_trans AS mt ON ma.AccountID = mt.AccountID
+              WHERE mt.Status = '5' AND m.Dept = '$dept' AND m.Section = '$section' AND m.Class = '$class' AND m.Room = '$room'";
+              $query = mysqli_query($conn, $sql) or die(mysqli_error($conn));
+              $successDepo = mysqli_num_rows($query);
+
+            ?>
+
             <div class="col-md-4  allstudent">
               <h1>นักศึกษาที่ฝากเเล้ว</h1>
-              <h1>50 <span>คน</span></h1>
+              <h1><?php echo $successDepo;  ?> <span>คน</span></h1>
             </div>
+
+            <?php
+              $sql = "SELECT mt.TransID, m.MemberCode, m.Firstname, m.Lastname, ma.Account_number, mt.Date, SUM(mt.Amount), mt.Status
+              FROM member AS m
+              INNER JOIN member_account AS ma ON  m.MemberID = ma.MemberID
+              INNER JOIN member_trans AS mt ON ma.AccountID = mt.AccountID
+              WHERE mt.Status = '5' AND m.Dept = '$dept' AND m.Section = '$section' AND m.Class = '$class' AND m.Room = '$room' AND mt.Date = '$todayDate'";
+              $query = mysqli_query($conn, $sql) or die(mysqli_error($conn));
+              $sumAmount = mysqli_fetch_array($query);
+            ?>
 
             <div class="col-md-4  allstudent">
               <h1>ยอดรวม</h1>
-              <h1>20000 <span>บาท</span></h1>
+              <h1><?php if(!empty($sumAmount['SUM(mt.Amount)'])){echo $sumAmount['SUM(mt.Amount)'];}else{ echo "0";}?> <span>บาท</span></h1>
             </div>
           </div>
         </div>
 
         <?php
-        $dept = $_SESSION['dept'];
-        $section = $_SESSION['section'];
-        $class = $_SESSION['class'];
-        $room = $_SESSION['room'];
+        
         if ($_SESSION['specialStatus'] == "treasurer") {
           $status = 0;
         } elseif ($_SESSION['specialStatus'] == "sub-headroom" || $_SESSION['specialStatus'] == "headroom") {
