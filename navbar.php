@@ -31,19 +31,19 @@
           $validate2 = $_SESSION['userlevel'] == "teller" || $_SESSION['userlevel'] == "bank-account";
           if($validate2){ ?>
           <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="room.html" id="dropdown04" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">ส่วนเสริม</a>
+            <a class="nav-link dropdown-toggle" id="dropdown04" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">ส่วนเสริม</a>
             <div class="dropdown-menu" aria-labelledby="dropdown04">
-              <a class="dropdown-item" href="./request-account.php">คำขอร้องการเปิดบัญชี</a>
+              <a class="dropdown-item <?php if($_SERVER['PHP_SELF'] == "/SM-FIND/request-account.php"){ echo "active";} ?>" href="./request-account.php">คำขอร้องการเปิดบัญชี</a>
               <!-- หน้า dashboard
               -->
-              <a class="dropdown-item" href=".php">แดชบอร์ด</a>
+              <a class="dropdown-item " href=".php">แดชบอร์ด</a>
             </div>
           </li>
           <?php }elseif($validate){ ?>
             <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="room.html" id="dropdown04" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">ส่วนเสริม</a>
             <div class="dropdown-menu" aria-labelledby="dropdown04">
-              <a class="dropdown-item" href="report.php">รายงานเงินฝาก</a>
+              <a class="dropdown-item <?php if($_SERVER['PHP_SELF'] == "/SM-FIND/report.php"){ echo "active";} ?>" href="report.php">รายงานเงินฝาก</a>
             </div>
           </li>
 
