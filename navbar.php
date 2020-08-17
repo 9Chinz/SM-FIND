@@ -5,19 +5,19 @@
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="oi oi-menu"></span> Menu
       </button>
-
+      <?php echo $_SERVER['PHP_SELF'] ?>
       <div class="collapse navbar-collapse" id="ftco-nav">
         <ul class="navbar-nav ml-auto">
-          <li class="nav-item"><a href="index.php" class="nav-link">หน้าแรก</a></li>
+          <li class="nav-item <?php if($_SERVER['PHP_SELF'] == "/SM-FIND/index.php"){ echo "active";} ?>"><a href="index.php" class="nav-link">หน้าแรก</a></li>
           <?php if($_SESSION['userlevel'] != "teller" AND $_SESSION['userlevel'] != "bank-account"){ ?>
-          <li class="nav-item active"><a href="about.php" class="nav-link">โปรไฟล์</a></li>
+          <li class="nav-item <?php if($_SERVER['PHP_SELF'] == "/SM-FIND/about.php"){ echo "active";} ?>"><a href="about.php" class="nav-link">โปรไฟล์</a></li>
           <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="room.html" id="dropdown04" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">บริการ</a>
+            <a class="nav-link dropdown-toggle" id="dropdown04" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">บริการ</a>
             <div class="dropdown-menu" aria-labelledby="dropdown04">
               <?php if(!isset($_SESSION['hasAccount'])){ ?>
               <a class="dropdown-item" href="create-account.php">เปิดบัญชี</a>
               <?php } ?>
-              <a class="dropdown-item" href="deposit.php">ฝาก</a>
+              <a class="dropdown-item <?php if($_SERVER['PHP_SELF'] == "/SM-FIND/deposit.php"){ echo "active";} ?>" href="deposit.php">ฝาก</a>
               <a class="dropdown-item" href="#">ถอน</a>
             </div>
           </li>
