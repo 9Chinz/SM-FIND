@@ -35,7 +35,7 @@
               <a class="dropdown-item <?php if($_SERVER['PHP_SELF'] == "/SM-FIND/request-account.php"){ echo "active";} ?>" href="./request-account.php">คำขอร้องการเปิดบัญชี</a>
               <!-- หน้า dashboard
               -->
-              <a class="dropdown-item " href=".php">แดชบอร์ด</a>
+              <a class="dropdown-item " href="./backend/management-board.php">แดชบอร์ด</a>
             </div>
           </li>
           <?php }elseif($validate){ ?>
