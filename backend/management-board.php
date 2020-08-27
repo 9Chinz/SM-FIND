@@ -15,7 +15,7 @@
   <link href="../vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
 
   <!-- Custom styles for this template-->
-  <link href="../css/sb-admin-2.min.css" rel="stylesheet">
+  <link href="../css/sb-admin-2.css" rel="stylesheet">
 
 </head>
 
@@ -218,6 +218,19 @@
 
           <!-- Content Row -->
 
+<<<<<<< HEAD
+          <div class="row dropdown-class">
+
+            <div class="col dropselect">
+                <select name="" id="">
+                  <option value="1">sadd</option>
+                  <option value="1"></option>
+                  <option value="1"></option>
+                  <option value="1"></option>
+                  <option value="1"></option>
+                  <option value="1"></option>
+                </select>
+=======
           <div class="row">
 
           <!-- Content Row -->
@@ -249,11 +262,41 @@
                 </div>
               </div>
 
+>>>>>>> 91f6a019621f74e3a543046eb79837cc4c960fa6
             </div>
 
-            <div class="col-lg-6 mb-4">         
-
+            <div class="col dropselect">         
+            <select name="" id="">
+                  <option value="1"></option>
+                  <option value="1"></option>
+                  <option value="1"></option>
+                  <option value="1"></option>
+                  <option value="1"></option>
+                  <option value="1"></option>
+                </select>
             </div>
+            
+            <div class="col dropselect">         
+            <select name="" id="">
+                  <option value="1"></option>
+                  <option value="1"></option>
+                  <option value="1"></option>
+                  <option value="1"></option>
+                  <option value="1"></option>
+                  <option value="1"></option>
+                </select>
+            </div>
+            
+            <div class="col dropselect">         
+            <select name="" id="">
+                  <option value="1"></option>
+                  <option value="1"></option>
+                  <option value="1"></option>
+                  <option value="1"></option>
+                  <option value="1"></option>
+                  <option value="1"></option>
+                </select>
+            
           </div>
 
         </div>

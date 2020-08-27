@@ -11221,3 +11221,12 @@ footer.sticky-footer .copyright {
 body.sidebar-toggled footer.sticky-footer {
   width: 100%;
 }
+
+.dropdown-class:after{
+  content: "";
+  display: block;
+  height: 50px;
+}
+.dropselect select{
+  width: 100%;
+}
