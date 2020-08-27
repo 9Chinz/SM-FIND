@@ -103,31 +103,7 @@
           </div>
         </div>
           <div class="col-xl-6 quest">
-            <div class="headleader">
-              <h1>Quest</h1>
-            </div>
-              <div class="questbox">
-                  <div class="quest__profiles">
-                    <span>1. ฝากให้ถึง 200 ในอาทิตย์นี้</span> 
-                    <span></span>
-                   <span>500</span>
-                  </div>
-                  <div class="quest__profiles">                   
-                    <span>1. ฝากให้ถึง 200 ในอาทิตย์นี้</span> 
-                    <span></span>
-                    <span>400</span>
-                  </div>
-                  <div class="quest__profiles">              
-                    <span>1. ฝากให้ถึง 200 ในอาทิตย์นี้</span>
-                    <span></span> 
-                    <span>200</span>
-                  </div>
-                  <div class="quest__profiles">   
-                    <span>1. ฝากให้ถึง 200 ในอาทิตย์นี้</span> 
-                    <span></span>
-                    <span>1000</span>
-                  </div>
-            </div>
+           
           </div>
             </div>
           </div>

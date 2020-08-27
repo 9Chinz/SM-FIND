@@ -67,16 +67,16 @@ if(!isset($_SESSION['hasLogin'])){
           <div class="col-md-6 pr-md-5">
             <form action="./config/create-account-proc.php" method="POST">
             <div class="form-group">
-                <input type="text" class="form-control" name="code" placeholder="รหัสนักศึกษา">
+                <input type="text" class="form-control" name="code" placeholder="รหัสนักศึกษา" value="<?php echo $_SESSION['code']; ?>" readonly>
               </div>
               <div class="form-group">
-                <input type="text" class="form-control" name="firstname" placeholder="ชื่อจริง">
+                <input type="text" class="form-control" name="firstname" placeholder="ชื่อจริง" value="<?php echo $_SESSION['firstname']; ?>" readonly>
               </div>
               <div class="form-group">
-                <input type="text" class="form-control" name="lastname" placeholder="นามสกุล">
+                <input type="text" class="form-control" name="lastname" placeholder="นามสกุล" value="<?php echo $_SESSION['lastname']; ?>" readonly>
               </div>
               <div class="form-group">
-                <input type="email" class="form-control" name="email" placeholder="email">
+                <input type="email" class="form-control" name="email" placeholder="email" value="<?php echo $_SESSION['email']; ?>" readonly>
               </div>
               <div class="form-group">
                 <input type="text" class="form-control" name="cash" placeholder="ขั้นต่ำ 100 บาท" min="100">

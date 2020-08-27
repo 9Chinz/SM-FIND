@@ -5,7 +5,6 @@
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="oi oi-menu"></span> Menu
       </button>
-      <?php echo $_SERVER['PHP_SELF'] ?>
       <div class="collapse navbar-collapse" id="ftco-nav">
         <ul class="navbar-nav ml-auto">
           <li class="nav-item <?php if($_SERVER['PHP_SELF'] == "/SM-FIND/index.php"){ echo "active";} ?>"><a href="index.php" class="nav-link">หน้าแรก</a></li>
@@ -15,7 +14,7 @@
             <a class="nav-link dropdown-toggle" id="dropdown04" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">บริการ</a>
             <div class="dropdown-menu" aria-labelledby="dropdown04">
               <?php if(!isset($_SESSION['hasAccount'])){ ?>
-              <a class="dropdown-item" href="create-account.php">เปิดบัญชี</a>
+              <a class="dropdown-item <?php if($_SERVER['PHP_SELF'] == "/SM-FIND/create-account.php"){ echo "active";} ?>" href="create-account.php">เปิดบัญชี</a>
               <?php } ?>
               <a class="dropdown-item <?php if($_SERVER['PHP_SELF'] == "/SM-FIND/deposit.php"){ echo "active";} ?>" href="deposit.php">ฝาก</a>
               <a class="dropdown-item" href="#">ถอน</a>
@@ -36,7 +35,7 @@
               <a class="dropdown-item <?php if($_SERVER['PHP_SELF'] == "/SM-FIND/request-account.php"){ echo "active";} ?>" href="./request-account.php">คำขอร้องการเปิดบัญชี</a>
               <!-- หน้า dashboard
               -->
-              <a class="dropdown-item " href=".php">แดชบอร์ด</a>
+              <a class="dropdown-item " href="./backend/management-board.php">แดชบอร์ด</a>
             </div>
           </li>
           <?php }elseif($validate){ ?>
@@ -57,7 +56,7 @@
 <?php } else { ?>
   <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
     <div class="container">
-      <a class="navbar-brand" href="index.html">SM FIN D</a>
+      <a class="navbar-brand" href="index.php">SM FIN D</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="oi oi-menu"></span> Menu
       </button>
