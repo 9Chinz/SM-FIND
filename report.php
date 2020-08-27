@@ -166,15 +166,7 @@ $todayDate = date("Y-m-d");
                 <?php $n++;
                 }
               } else { ?>
-                <tr>
-                  <th scope="row">-</th>
-                  <td>-</td>
-                  <td>-</td>
-                  <td>-</td>
-                  <td>-<span>-</span></td>
-                  <td>submit</td>
-                  <td>submit</td>
-                </tr>
+
               <?php } ?>
             </tbody>
           </table>
