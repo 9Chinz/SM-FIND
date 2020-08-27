@@ -11221,12 +11221,47 @@ footer.sticky-footer .copyright {
 body.sidebar-toggled footer.sticky-footer {
   width: 100%;
 }
-
+.dropdown-class{
+    margin-bottom: 10%;
+}
 .dropdown-class:after{
   content: "";
   display: block;
   height: 50px;
 }
-.dropselect select{
-  width: 100%;
+.dropselect{
+  margin: 20px;
+  background-color: white;
+  padding: 0 0 4% 0;
+  border-radius: 20px;
+  border: #D0CFCF 1px solid ;
+  box-shadow: 0 0.15rem 1.75rem 0 rgba(58, 59, 69, 0.15) !important;
+}
+.dropselect span {
+  padding: 20px;
+}
+.headdrop{
+  border-radius: 20px 20px 0  0  ;
+  border-bottom: #D0CFCF 1px solid ;
+  margin: 0 0px 0 0 ;
+}
+.headdrop h1{
+  margin: 20px 5% 20px 0;
+  font-size: 20px;
+  padding-left:20px ;
+}
+.condrop{
+  min-width: 90%;
+  width: 90%;
+  margin-top: 20px;
+  margin-left: 5%;
+  background-color: #f7f7f7c0;
+}
+.condrop select{
+  background-color:#f7f7f7c0;
+  border: 0;
+  margin-left:10px ;
+  padding-left:5px ;
+  width: 70%;
+  height: 50px;
 }
