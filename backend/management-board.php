@@ -224,7 +224,30 @@
           <div class="row">
 
             <!-- Content Column -->
-            <div class="col-lg-6 mb-4">
+            <div class="col-lg-12">
+
+              <div class="card position-relative">
+                <div class="card-header py-3">
+                  <h6 class="m-0 font-weight-bold text-primary">ค้นหาห้องเรียน</h6>
+                </div>
+                <div class="card-body">
+                  <nav class="navbar navbar-expand navbar-light bg-light mb-4">
+                    <a class="navbar-brand" href="#">สาขา</a>
+                    <ul class="navbar-nav ml-auto">
+                      <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                          Dropdown
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-right animated--grow-in" aria-labelledby="navbarDropdown">
+                          <a class="dropdown-item" href="#">IT</a>
+                          <div class="dropdown-divider"></div>
+                          <a class="dropdown-item" href="#">BC</a>
+                        </div>
+                      </li>
+                    </ul>
+                  </nav>
+                </div>
+              </div>
 
             </div>
 
