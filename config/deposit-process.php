@@ -3,7 +3,11 @@ date_default_timezone_set('Asia/Bangkok');
 session_start();
 require "./connect.php";
 require "./log.php";
-
+if(!isset($_SESSION['accountNumber'])){
+    echo "<script type='text/javascript'>alert('sorry you have no account!')</script>";
+    echo '<meta http-equiv="refresh" content="1; url=../deposit.php"> ';
+    exit();
+}
 $accountNumber = $_SESSION['accountNumber'];
 $depositCash = $_POST['deposit-cash'];
 $id = $_SESSION['accountID'];

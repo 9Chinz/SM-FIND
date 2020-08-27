@@ -54,7 +54,7 @@ if(!isset($_SESSION['hasLogin'])){
               <span class="col">
                 <form action="./config/deposit-process.php" method="POST">
                   <div class="depositbox">
-                    <img src="" alt=""><input type="text" name="account-number" value="<?php echo $_SESSION['accountNumber']; ?>" placeholder="ใส่เลขที่บัญชี" class="form-control">
+                    <img src="" alt=""><input type="text" name="account-number" value="<?php if(isset($_SESSION['accountNumber'])){echo $_SESSION['accountNumber'];} ?>" placeholder="ใส่เลขที่บัญชี" class="form-control" readonly>
                   </div>
                   <div class="depositbox">
                     <img src="" alt=""><input type="text" name="deposit-cash" placeholder="ใส่จำนวนเงิน.." class="form-control">
