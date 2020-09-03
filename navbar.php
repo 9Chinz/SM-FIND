@@ -17,7 +17,7 @@
               <a class="dropdown-item <?php if($_SERVER['PHP_SELF'] == "/SM-FIND/create-account.php"){ echo "active";} ?>" href="create-account.php">เปิดบัญชี</a>
               <?php } ?>
               <a class="dropdown-item <?php if($_SERVER['PHP_SELF'] == "/SM-FIND/deposit.php"){ echo "active";} ?>" href="deposit.php">ฝาก</a>
-              <a class="dropdown-item" href="#">ถอน</a>
+              
             </div>
           </li>
           <?php } ?>

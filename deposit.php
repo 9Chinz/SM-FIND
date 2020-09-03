@@ -54,10 +54,10 @@ if(!isset($_SESSION['hasLogin'])){
               <span class="col">
                 <form action="./config/deposit-process.php" method="POST">
                   <div class="depositbox">
-                    <img src="" alt=""><input type="text" name="account-number" value="<?php if(isset($_SESSION['accountNumber'])){echo $_SESSION['accountNumber'];} ?>" placeholder="ใส่เลขที่บัญชี" class="form-control" readonly>
+                    <input type="text" name="account-number" value="<?php if(isset($_SESSION['accountNumber'])){echo $_SESSION['accountNumber'];} ?>" placeholder="ใส่เลขที่บัญชี" class="form-control" readonly>
                   </div>
                   <div class="depositbox">
-                    <img src="" alt=""><input type="text" name="deposit-cash" placeholder="ใส่จำนวนเงิน.." class="form-control">
+                    <input type="text" name="deposit-cash" placeholder="ใส่จำนวนเงิน.." class="form-control">
                   </div>
                   <input type="submit" name="btn-deposit" value="กดยืนยัน" class="summit">
                 </form>
@@ -68,9 +68,7 @@ if(!isset($_SESSION['hasLogin'])){
 
             </div>
             <div class="col">
-              <div class="">
-                <span class="">หยดน้ำที่คาดว่าจะได้รับ<p class="bluepoint"></p><img src="" alt=""></span>
-              </div>
+              
             </div>
           </div>
 

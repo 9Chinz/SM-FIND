@@ -11229,14 +11229,7 @@ body.sidebar-toggled footer.sticky-footer {
   display: block;
   height: 50px;
 }
-.dropselect{
-  margin: 20px;
-  background-color: white;
-  padding: 0 0 4% 0;
-  border-radius: 20px;
-  border: #D0CFCF 1px solid ;
-  box-shadow: 0 0.15rem 1.75rem 0 rgba(58, 59, 69, 0.15) !important;
-}
+  
 .dropselect span {
   padding: 20px;
 }
@@ -11264,4 +11257,7 @@ body.sidebar-toggled footer.sticky-footer {
   padding-left:5px ;
   width: 70%;
   height: 50px;
+}
+.table_style{
+  margin-top: 2%;
 }
