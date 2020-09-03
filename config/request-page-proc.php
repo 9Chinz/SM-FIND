@@ -28,7 +28,7 @@ if(isset($_POST['btn-accept'])){
             $deleteSql = "DELETE FROM request_account WHERE Code ='$code';";
             $delResult = mysqli_query($conn ,$deleteSql);
             echo "<script type='text/javascript'>alert('create account successful!')</script>";
-            echo '<meta http-equiv="refresh" content="1; url=../request-account.php"> ';
+            echo '<meta http-equiv="refresh" content="0; url=../request-account.php"> ';
         }else{
             echo "failed";
         }

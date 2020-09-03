@@ -21,11 +21,11 @@ if(isset($_GET['btn'])){
             $sql = "UPDATE member_trans SET Status = '2' WHERE TransID = '$id'";
         } elseif ($_SESSION['userlevel'] == "teacher") {
             $sql = "UPDATE member_trans SET Status = '3' WHERE TransID = '$id'";
-        } 
+        }
 
         $query = mysqli_query($conn, $sql) or die(mysqli_error($conn));
         if($query){
-            echo '<meta http-equiv="refresh" content="1; url=../report.php"> ';
+            echo '<meta http-equiv="refresh" content="0; url=../report.php"> ';
         }else{
             echo "<script>alert('failed to change status!')</script>";
             echo '<meta http-equiv="refresh" content="1; url=../report.php"> ';
@@ -39,7 +39,7 @@ if(isset($_GET['btn'])){
         }
         $query = mysqli_query($conn, $sql) or die(mysqli_error($conn));
         if($query){
-            echo '<meta http-equiv="refresh" content="1; url=../report.php"> ';
+            echo '<meta http-equiv="refresh" content="0; url=../report.php"> ';
         }else{
             echo "<script>alert('failed to change status!')</script>";
             echo '<meta http-equiv="refresh" content="1; url=../report.php"> ';
