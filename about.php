@@ -79,7 +79,7 @@
           </div>
         </div>
         <div class="row ">
-          <div class="col-xl-6 Leaderboard">
+          <div class="col-xl-12 Leaderboard">
             <div class="headleader">
             <h1>Leaderboard</h1>
           </div>
@@ -102,9 +102,7 @@
                 </div>
           </div>
         </div>
-          <div class="col-xl-6 quest">
-           
-          </div>
+       
             </div>
           </div>
         </div>
