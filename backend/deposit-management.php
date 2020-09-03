@@ -2,6 +2,45 @@
 session_start();
 require "../config/connect.php";
 
+include "./search.php";
+
+if (isset($_GET['btn'])) {
+  $btn = $_GET['btn'];
+  $id = $_GET['id'];
+  if ($btn == "accept") {
+    if ($_SESSION['userlevel'] == "teller") {
+      $sql = "UPDATE member_trans SET Status = '4' WHERE TransID = '$id'";
+    } elseif ($_SESSION['userlevel'] == "bank-account") {
+      $sql = "UPDATE member_trans SET Status = '5' WHERE TransID = '$id'";
+    }
+    $query = mysqli_query($conn, $sql) or die(mysqli_error($conn));
+    if ($query) {
+      if($_SESSION['userlevel'] == "bank-account"){
+        $sql = "SELECT * FROM member_trans WHERE TransID = '$id'";
+        $query = mysqli_query($conn, $sql) or die(mysqli_error($conn));
+        $result = mysqli_fetch_array($query);
+        $accountID= $result['AccountID'];
+        $amount = $result['Amount'];
+        $plusSql = "UPDATE member_account SET Account_balance = Account_balance+'$amount' WHERE AccountID = '$accountID';";
+        $sum = mysqli_query($conn, $plusSql) or die(mysqli_error($conn));
+      }
+      echo '<meta http-equiv="refresh" content="0; url=./deposit-management.php"> ';
+    } else {
+      echo "<script>alert('failed to change status!')</script>";
+      echo '<meta http-equiv="refresh" content="1; url=./deposit-management.php"> ';
+    }
+  } else {
+    $sql = "UPDATE member_trans SET Status = '0' WHERE TransID = '$id'";
+    $query = mysqli_query($conn, $sql) or die(mysqli_error($conn));
+    if ($query) {
+      echo '<meta http-equiv="refresh" content="0; url=./deposit-management.php"> ';
+    } else {
+      echo "<script>alert('failed to change status!')</script>";
+      echo '<meta http-equiv="refresh" content="1; url=./deposit-management.php"> ';
+    }
+  }
+}
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -14,7 +53,7 @@ require "../config/connect.php";
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>SM FIN D Dashboard</title>
+  <title>Deposit management</title>
 
   <!-- Custom fonts for this template-->
   <link href="../vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -29,33 +68,7 @@ require "../config/connect.php";
   <!-- Page Wrapper -->
   <div id="wrapper">
 
-    <!-- Sidebar -->
-    <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
-
-      <!-- Sidebar - Brand -->
-      <a class="sidebar-brand d-flex align-items-center justify-content-center" href="./management-board.php">
-        <div class="sidebar-brand-icon rotate-n-15">
-          <!-- picture -->
-        </div>
-        <div class="sidebar-brand-text mx-3">SM FIN D Dashboard <sup></sup></div>
-      </a>
-
-      <!-- Divider -->
-      <hr class="sidebar-divider my-0">
-
-      <!-- Nav Item - Dashboard -->
-      <li class="nav-item active">
-        <a class="nav-link" href="./management-board.php">
-          <i class="fas fa-fw fa-tachometer-alt"></i>
-          <span>report</span></a>
-      </li>
-
-      <!-- Divider -->
-      <hr class="sidebar-divider my-0">
-      <!-- Divider -->
-      <!-- Nav Item - Charts -->
-
-    </ul>
+    <?php include "./management-nav.php"; ?>
     <!-- End of Sidebar -->
 
     <!-- Content Wrapper -->
@@ -100,7 +113,7 @@ require "../config/connect.php";
 
           <!-- Page Heading -->
           <div class="d-sm-flex align-items-center justify-content-between mb-4">
-            <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
+            <h1 class="h3 mb-0 text-gray-800">จัดการฝากเงิน</h1>
           </div>
 
 
@@ -108,90 +121,68 @@ require "../config/connect.php";
 
             <div class="card shadow  position-relative">
               <div class="card-header py-3">
-                <h6 class="m-0 font-weight-bold text-primary">ค้นหานักเรียน</h6>
+                <h6 class="m-0 font-weight-bold text-primary">ค้นหาห้องเรียน</h6>
               </div>
-              <div class="card-body">
-                <div class="row">
-                  <div class="col-xl-3 col-md-6 mb-4">
-                    <nav class="navbar navbar-expand navbar-light bg-light mb-4">
-                      <a class="navbar-brand" href="#">Navbar</a>
-                      <ul class="navbar-nav ml-auto">
-                        <li class="nav-item dropdown">
-                          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Dropdown
-                          </a>
-                          <div class="dropdown-menu dropdown-menu-right animated--fade-in" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="#">Action</a>
-                            <a class="dropdown-item" href="#">Another action</a>
-                            <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="#">Something else here</a>
-                          </div>
-                        </li>
-                      </ul>
-                    </nav>
+              <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="post">
+                <div class="card-body">
+                  <div class="row">
+                    <div class="col-xl-3 col-md-6 mb-4">
+                      <nav class="navbar navbar-expand navbar-light bg-light mb-4">
+                        <a class="navbar-brand" href="#">สาขา</a>
+                        <select name="dept">
+                          <option value="IT">เทคโนโลยีสารสนเทศ</option>
+                          <option value="CG">คอมพิวเตอร์กราฟิก</option>
+                          <option value="BC">คอมพิวเตอร์ธุรกิจ</option>
+                          <option value="AC">บัญชี</option>
+                        </select>
+                      </nav>
+                    </div>
+                    <div class="col-xl-3 col-md-6 mb-4">
+                      <nav class="navbar navbar-expand navbar-light bg-light mb-4">
+                        <a class="navbar-brand" href="#">ระดับ</a>
+                        <select name="section">
+                          <option value="Lower">ปวช</option>
+                          <option value="Upper">ปวส</option>
+                        </select>
+                      </nav>
+                    </div>
+                    <div class="col-xl-3 col-md-6 mb-4">
+                      <nav class="navbar navbar-expand navbar-light bg-light mb-4">
+                        <a class="navbar-brand" href="#">ชั้น</a>
+                        <select name="class">
+                          <option value="1">1</option>
+                          <option value="2">2</option>
+                          <option value="3">3</option>
+                        </select>
+                      </nav>
+                    </div>
+                    <div class="col-xl-3 col-md-6 mb-4">
+                      <nav class="navbar navbar-expand navbar-light bg-light mb-4">
+                        <a class="navbar-brand" href="#">ห้อง</a>
+                        <select name="room">
+                          <option value="1">1</option>
+                          <option value="2">2</option>
+                          <option value="3">3</option>
+                          <option value="4">4</option>
+                          <option value="5">5</option>
+                          <option value="6">6</option>
+                          <option value="7">7</option>
+                          <option value="8">8</option>
+                          <option value="9">9</option>
+                          <option value="10">10</option>
+                          <option value="11">11</option>
+                          <option value="12">12</option>
+                          <option value="13">13</option>
+                          <option value="14">14</option>
+                          <option value="15">15</option>
+                        </select>
+                      </nav>
+                    </div>
                   </div>
-                  <div class="col-xl-3 col-md-6 mb-4">
-                    <nav class="navbar navbar-expand navbar-light bg-light mb-4">
-                      <a class="navbar-brand" href="#">Navbar</a>
-                      <ul class="navbar-nav ml-auto">
-                        <li class="nav-item dropdown">
-                          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Dropdown
-                          </a>
-                          <div class="dropdown-menu dropdown-menu-right animated--fade-in" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="#">Action</a>
-                            <a class="dropdown-item" href="#">Another action</a>
-                            <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="#">Something else here</a>
-                          </div>
-                        </li>
-                      </ul>
-                    </nav>
-                  </div>
-                  <div class="col-xl-3 col-md-6 mb-4">
-                    <nav class="navbar navbar-expand navbar-light bg-light mb-4">
-                      <a class="navbar-brand" href="#">Navbar</a>
-                      <ul class="navbar-nav ml-auto">
-                        <li class="nav-item dropdown">
-                          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Dropdown
-                          </a>
-                          <div class="dropdown-menu dropdown-menu-right animated--fade-in" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="#">Action</a>
-                            <a class="dropdown-item" href="#">Another action</a>
-                            <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="#">Something else here</a>
-                          </div>
-                        </li>
-                      </ul>
-                    </nav>
-                  </div>
-                  <div class="col-xl-3 col-md-6 mb-4">
-                    <nav class="navbar navbar-expand navbar-light bg-light mb-4">
-                      <a class="navbar-brand" href="#">Navbar</a>
-                      <ul class="navbar-nav ml-auto">
-                        <li class="nav-item dropdown">
-                          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Dropdown
-                          </a>
-                          <div class="dropdown-menu dropdown-menu-right animated--fade-in" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="#">Action</a>
-                            <a class="dropdown-item" href="#">Another action</a>
-                            <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="#">Something else here</a>
-                          </div>
-                        </li>
-                      </ul>
-                    </nav>
-                  </div>
-
-                  </li>
-                  </ul>
-                  </nav>
-                  <button type="button" class="btn btn-primary">Primary</button>
+                  <input type="submit" class="btn btn-primary" value="ค้นหา" name="btnSearch">
                 </div>
-              </div>
-              
+              </form>
+
 
             </div>
           </div>
@@ -204,41 +195,38 @@ require "../config/connect.php";
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                   <thead>
                     <tr>
-                      <th>Name</th>
-                      <th>Position</th>
-                      <th>Office</th>
-                      <th>Age</th>
-                      <th>Start date</th>
-                      <th>Salary</th>
+                      <th scope="col">#</th>
+                      <th scope="col">รหัสนักศึกษา</th>
+                      <th scope="col">ชื่อ-นามสกุล</th>
+                      <th scope="col">เลขที่บัญชี</th>
+                      <th scope="col">จำนวนเงิน</th>
+                      <th scope="col">ตรวจสอบ</th>
+                      <th scope="col">ตรวจสอบ</th>
                     </tr>
                   </thead>
-                  <tfoot>
-                    <tr>
-                      <th>Name</th>
-                      <th>Position</th>
-                      <th>Office</th>
-                      <th>Age</th>
-                      <th>Start date</th>
-                      <th>Salary</th>
-                    </tr>
-                  </tfoot>
                   <tbody>
-                    <tr>
-                      <td>Tiger Nixon</td>
-                      <td>System Architect</td>
-                      <td>Edinburgh</td>
-                      <td>61</td>
-                      <td>2011/04/25</td>
-                      <td>$320,800</td>
-                    </tr>
-                    <tr>
-                      <td>Donna Snider</td>
-                      <td>Customer Support</td>
-                      <td>New York</td>
-                      <td>27</td>
-                      <td>2011/01/25</td>
-                      <td>$112,000</td>
-                    </tr>
+                    <?php
+                    if (isset($_POST['btnSearch'])) {
+                      $n = 1;
+                      if ($num > 0) {
+                        while ($row = mysqli_fetch_array($query)) { ?>
+                          <form action="" method="post">
+                            <tr>
+                              <th scope="row"><?php echo $n; ?></th>
+                              <td><?php echo $row['MemberCode']; ?></td>
+                              <td><?php echo $row['Firstname'] . " " . $row['Lastname']; ?></td>
+                              <td><?php echo $row['Account_number']; ?></td>
+                              <td><?php echo $row['Amount']; ?><span>฿</span></td>
+                              <td><a href="<?php echo $_SERVER['PHP_SELF']; ?>?id=<?php echo $row['TransID']; ?>&btn=accept" class="btn btn-success">ยอมรับ</a></td>
+                              <td><a href="<?php echo $_SERVER['PHP_SELF']; ?>?id=<?php echo $row['TransID']; ?>& btn=reject" class="btn btn-danger">ปฎิเสธ</a></td>
+                            </tr>
+                          </form>
+                        <?php $n++;
+                        }
+                      } else { ?>
+
+                    <?php }
+                    } ?>
                   </tbody>
                 </table>
               </div>
