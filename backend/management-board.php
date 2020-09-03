@@ -1,6 +1,25 @@
-<?php 
+<?php
 session_start();
 require "../config/connect.php";
+
+if (isset($_POST['btnSearch'])) {
+  $dept = $_POST['dept'];
+  $section = $_POST['section'];
+  $class = $_POST['class'];
+  $room = $_POST['room'];
+  if ($_SESSION['userlevel'] == "bank-account") {
+      $status = 5;
+  }
+
+  $sql = "SELECT member_trans.TransID, member.MemberCode, member.Firstname, member.Lastname, member_account.Account_number, member_trans.Date, member_trans.Amount, member_trans.Status
+  FROM member
+  INNER JOIN member_account ON  member.MemberID = member_account.MemberID
+  INNER JOIN member_trans ON member_account.AccountID = member_trans.AccountID
+  WHERE member_trans.Status = '$status' AND member.Dept = '$dept' AND member.Section = '$section' AND member.Class = '$class' AND member.Room = '$room'";
+
+  $query = mysqli_query($conn, $sql) or die(mysqli_error($conn));
+  $num = mysqli_num_rows($query);
+}
 
 ?>
 <!DOCTYPE html>
@@ -29,40 +48,7 @@ require "../config/connect.php";
   <!-- Page Wrapper -->
   <div id="wrapper">
 
-    <!-- Sidebar -->
-    <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
-
-      <!-- Sidebar - Brand -->
-      <a class="sidebar-brand d-flex align-items-center justify-content-center" href="./management-board.php">
-        <div class="sidebar-brand-icon rotate-n-15">
-          <!-- picture -->
-        </div>
-        <div class="sidebar-brand-text mx-3">SM FIN D Dashboard <sup></sup></div>
-      </a>
-
-      <!-- Divider -->
-      <hr class="sidebar-divider my-0">
-
-      <!-- Nav Item - Dashboard -->
-      <li class="nav-item active">
-        <a class="nav-link" href="./management-board.php">
-          <i class="fas fa-fw fa-tachometer-alt"></i>
-          <span>report</span></a>
-      </li>
-
-      <!-- Divider -->
-      <hr class="sidebar-divider my-0">
-
-      <!-- Nav Item - Dashboard -->
-      <li class="nav-item active">
-        <a class="nav-link" href="./deposit-management.php">
-          <i class="fas fa-fw fa-tachometer-alt"></i>
-          <span>deposit management</span></a>
-      </li>
-      <!-- Divider -->
-      <!-- Nav Item - Charts -->
-
-    </ul>
+    <?php include "./management-nav.php" ?>
     <!-- End of Sidebar -->
 
     <!-- Content Wrapper -->
@@ -190,16 +176,23 @@ require "../config/connect.php";
 
           <div class="col-lg-12">
 
-              <div class="card shadow  position-relative">
-                <div class="card-header py-3">
-                  <h6 class="m-0 font-weight-bold text-primary">ค้นหานักเรียน</h6>
-                </div>
+            <div class="card shadow  position-relative">
+              <div class="card-header py-3">
+                <h6 class="m-0 font-weight-bold text-primary">ค้นหาห้องเรียน</h6>
+              </div>
+              <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="post">
                 <div class="card-body">
                   <div class="row">
-                  <div class="col-xl-3 col-md-6 mb-4">
-                  <nav class="navbar navbar-expand navbar-light bg-light mb-4">
-                    <a class="navbar-brand" href="#">Navbar</a>
-                    <ul class="navbar-nav ml-auto">
+                    <div class="col-xl-3 col-md-6 mb-4">
+                      <nav class="navbar navbar-expand navbar-light bg-light mb-4">
+                        <a class="navbar-brand" href="#">สาขา</a>
+                        <select name="dept">
+                          <option value="IT">เทคโนโลยีสารสนเทศ</option>
+                          <option value="CG">คอมพิวเตอร์กราฟิก</option>
+                          <option value="BC">คอมพิวเตอร์ธุรกิจ</option>
+                          <option value="AC">บัญชี</option>
+                        </select>
+                        <!--<ul class="navbar-nav ml-auto">
                       <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                           Dropdown
@@ -211,191 +204,181 @@ require "../config/connect.php";
                           <a class="dropdown-item" href="#">Something else here</a>
                         </div>
                       </li>
-                    </ul>
-                  </nav>
-                  </div>
-                  <div class="col-xl-3 col-md-6 mb-4">
-                  <nav class="navbar navbar-expand navbar-light bg-light mb-4">
-                    <a class="navbar-brand" href="#">Navbar</a>
-                    <ul class="navbar-nav ml-auto">
-                      <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                          Dropdown
-                        </a>
-                        <div class="dropdown-menu dropdown-menu-right animated--fade-in" aria-labelledby="navbarDropdown">
-                          <a class="dropdown-item" href="#">Action</a>
-                          <a class="dropdown-item" href="#">Another action</a>
-                          <div class="dropdown-divider"></div>
-                          <a class="dropdown-item" href="#">Something else here</a>
-                        </div>
-                      </li>
-                    </ul>
-                  </nav>
-                  </div>
-                  <div class="col-xl-3 col-md-6 mb-4">
-                  <nav class="navbar navbar-expand navbar-light bg-light mb-4">
-                    <a class="navbar-brand" href="#">Navbar</a>
-                    <ul class="navbar-nav ml-auto">
-                      <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                          Dropdown
-                        </a>
-                        <div class="dropdown-menu dropdown-menu-right animated--fade-in" aria-labelledby="navbarDropdown">
-                          <a class="dropdown-item" href="#">Action</a>
-                          <a class="dropdown-item" href="#">Another action</a>
-                          <div class="dropdown-divider"></div>
-                          <a class="dropdown-item" href="#">Something else here</a>
-                        </div>
-                      </li>
-                    </ul>
-                  </nav>
-                  </div>
-                  <div class="col-xl-3 col-md-6 mb-4">
-                  <nav class="navbar navbar-expand navbar-light bg-light mb-4">
-                    <a class="navbar-brand" href="#">Navbar</a>
-                    <ul class="navbar-nav ml-auto">
-                      <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                          Dropdown
-                        </a>
-                        <div class="dropdown-menu dropdown-menu-right animated--fade-in" aria-labelledby="navbarDropdown">
-                          <a class="dropdown-item" href="#">Action</a>
-                          <a class="dropdown-item" href="#">Another action</a>
-                          <div class="dropdown-divider"></div>
-                          <a class="dropdown-item" href="#">Something else here</a>
-                        </div>
-                      </li>
-                    </ul>
-                  </nav>
-                  </div>
-                  
-                      </li>
-                    </ul>
-                  </nav>
-                  
-                </div>
-              </div>
-              
-              
-              </div>
-            </div>
-            <div class="card shadow mb-4 table_style">
-            <div class="card-header py-3">
-              <h6 class="m-0 font-weight-bold text-primary">ตาราง</h6>
-            </div>
-            <div class="card-body">
-              <div class="table-responsive">
-                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                  <thead>
-                    <tr>
-                      <th>Name</th>
-                      <th>Position</th>
-                      <th>Office</th>
-                      <th>Age</th>
-                      <th>Start date</th>
-                      <th>Salary</th>
-                    </tr>
-                  </thead>
-                  <tfoot>
-                    <tr>
-                      <th>Name</th>
-                      <th>Position</th>
-                      <th>Office</th>
-                      <th>Age</th>
-                      <th>Start date</th>
-                      <th>Salary</th>
-                    </tr>
-                  </tfoot>
-                  <tbody>
-                    <tr>
-                      <td>Tiger Nixon</td>
-                      <td>System Architect</td>
-                      <td>Edinburgh</td>
-                      <td>61</td>
-                      <td>2011/04/25</td>
-                      <td>$320,800</td>
-                    </tr>
-                    <tr>
-                      <td>Donna Snider</td>
-                      <td>Customer Support</td>
-                      <td>New York</td>
-                      <td>27</td>
-                      <td>2011/01/25</td>
-                      <td>$112,000</td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
-            </div>
-          </div>
-          </div>
+                    </ul>-->
 
+                      </nav>
+                    </div>
+                    <div class="col-xl-3 col-md-6 mb-4">
+                      <nav class="navbar navbar-expand navbar-light bg-light mb-4">
+                        <a class="navbar-brand" href="#">ระดับ</a>
+                        <select name="section">
+                          <option value="Lower">ปวช</option>
+                          <option value="Upper">ปวส</option>
+                        </select>
+                      </nav>
+                    </div>
+                    <div class="col-xl-3 col-md-6 mb-4">
+                      <nav class="navbar navbar-expand navbar-light bg-light mb-4">
+                        <a class="navbar-brand" href="#">ชั้น</a>
+                        <select name="class">
+                          <option value="1">1</option>
+                          <option value="2">2</option>
+                          <option value="3">3</option>
+                        </select>
+                      </nav>
+                    </div>
+                    <div class="col-xl-3 col-md-6 mb-4">
+                      <nav class="navbar navbar-expand navbar-light bg-light mb-4">
+                        <a class="navbar-brand" href="#">ห้อง</a>
+                        <select name="room">
+                          <option value="1">1</option>
+                          <option value="2">2</option>
+                          <option value="3">3</option>
+                          <option value="4">4</option>
+                          <option value="5">5</option>
+                          <option value="6">6</option>
+                          <option value="7">7</option>
+                          <option value="8">8</option>
+                          <option value="9">9</option>
+                          <option value="10">10</option>
+                          <option value="11">11</option>
+                          <option value="12">12</option>
+                          <option value="13">13</option>
+                          <option value="14">14</option>
+                          <option value="15">15</option>
+                        </select>
+                      </nav>
+                    </div>
+
+                    </li>
+                    </ul>
+                    </nav>
+
+                  </div>
+                  <input type="submit" class="btn btn-primary" value="ค้นหา" name="btnSearch">
+              </form>
+            </div>
+
+
+          </div>
         </div>
+        <div class="card shadow mb-4 table_style">
+          <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-primary">ตาราง</h6>
           </div>
-          
-          <!-- /.container-fluid -->
-
-        </div>
-        <!-- End of Main Content -->
-
-        <!-- Footer -->
-        <footer class="sticky-footer bg-white">
-          <div class="container my-auto">
-            <div class="copyright text-center my-auto">
-              <span>Copyright &copy; <script>
-                  document.write(new Date().getFullYear());
-                </script> sbac.ac.th All Right Reserved</span>
+          <div class="card-body">
+            <div class="table-responsive">
+              <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <thead>
+                  <tr>
+                    <th>Name</th>
+                    <th>Position</th>
+                    <th>Office</th>
+                    <th>Age</th>
+                    <th>Start date</th>
+                    <th>Salary</th>
+                  </tr>
+                </thead>
+                <tfoot>
+                  <tr>
+                    <th>Name</th>
+                    <th>Position</th>
+                    <th>Office</th>
+                    <th>Age</th>
+                    <th>Start date</th>
+                    <th>Salary</th>
+                  </tr>
+                </tfoot>
+                <tbody>
+                  <tr>
+                    <td>Tiger Nixon</td>
+                    <td>System Architect</td>
+                    <td>Edinburgh</td>
+                    <td>61</td>
+                    <td>2011/04/25</td>
+                    <td>$320,800</td>
+                  </tr>
+                  <tr>
+                    <td>Donna Snider</td>
+                    <td>Customer Support</td>
+                    <td>New York</td>
+                    <td>27</td>
+                    <td>2011/01/25</td>
+                    <td>$112,000</td>
+                  </tr>
+                </tbody>
+              </table>
             </div>
-          </div>
-        </footer>
-        <!-- End of Footer -->
-
-      </div>
-      <!-- End of Content Wrapper -->
-
-    </div>
-    <!-- End of Page Wrapper -->
-
-    <!-- Scroll to Top Button-->
-    <a class="scroll-to-top rounded" href="#page-top">
-      <i class="fas fa-angle-up"></i>
-    </a>
-
-    <!-- Logout Modal-->
-    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">ออกจากระบบ ?</h5>
-            <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">×</span>
-            </button>
-          </div>
-          <div class="modal-body">คุณแน่ใจหรือไม่</div>
-          <div class="modal-footer">
-            <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-            <a class="btn btn-primary" href="../config/logout.php">Logout</a>
           </div>
         </div>
       </div>
+
     </div>
+  </div>
 
-    <!-- Bootstrap core JavaScript-->
-    <script src="../vendor/jquery/jquery.min.js"></script>
-    <script src="../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <!-- /.container-fluid -->
 
-    <!-- Core plugin JavaScript-->
-    <script src="../vendor/jquery-easing/jquery.easing.min.js"></script>
+  </div>
+  <!-- End of Main Content -->
 
-    <!-- Custom scripts for all pages-->
-    <script src="../js/sb-admin-2.min.js"></script>
+  <!-- Footer -->
+  <footer class="sticky-footer bg-white">
+    <div class="container my-auto">
+      <div class="copyright text-center my-auto">
+        <span>Copyright &copy; <script>
+            document.write(new Date().getFullYear());
+          </script> sbac.ac.th All Right Reserved</span>
+      </div>
+    </div>
+  </footer>
+  <!-- End of Footer -->
 
-    <!-- Page level plugins -->
-    <script src="../vendor/chart.js/Chart.min.js"></script>
+  </div>
+  <!-- End of Content Wrapper -->
 
-    <!-- Page level custom scripts -->
-    <script src="../js/demo/chart-area-demo.js"></script>
-    <script src="../js/demo/chart-pie-demo.js"></script>
+  </div>
+  <!-- End of Page Wrapper -->
+
+  <!-- Scroll to Top Button-->
+  <a class="scroll-to-top rounded" href="#page-top">
+    <i class="fas fa-angle-up"></i>
+  </a>
+
+  <!-- Logout Modal-->
+  <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">ออกจากระบบ ?</h5>
+          <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">×</span>
+          </button>
+        </div>
+        <div class="modal-body">คุณแน่ใจหรือไม่</div>
+        <div class="modal-footer">
+          <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+          <a class="btn btn-danger" href="../config/logout.php">Logout</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bootstrap core JavaScript-->
+  <script src="../vendor/jquery/jquery.min.js"></script>
+  <script src="../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Core plugin JavaScript-->
+  <script src="../vendor/jquery-easing/jquery.easing.min.js"></script>
+
+  <!-- Custom scripts for all pages-->
+  <script src="../js/sb-admin-2.min.js"></script>
+
+  <!-- Page level plugins -->
+  <script src="../vendor/chart.js/Chart.min.js"></script>
+
+  <!-- Page level custom scripts -->
+  <script src="../js/demo/chart-area-demo.js"></script>
+  <script src="../js/demo/chart-pie-demo.js"></script>
 
 </body>
 
