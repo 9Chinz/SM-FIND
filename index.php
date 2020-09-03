@@ -87,8 +87,8 @@
           <div class="block-3 d-md-flex ftco-animate">
             <a href="" class="image" style="background-image: url('images/data.svg'); "></a>
             <div class="text">
-              <h4 class="subheading">Web Design</h4>
-              <h2 class="heading"><a href="">Even the all-powerful Pointing has no control</a></h2>
+              <h4 class="subheading">web security</h4>
+              <h2 class="heading"><a href="">a branch of information security that deals specifically with security of websites.</a></h2>
               <p>Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic life One day however a small line of blind text by the name of Lorem Ipsum decided to leave for the far World of Grammar.</p>
             </div>
           </div>
