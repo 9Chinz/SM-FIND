@@ -33,7 +33,7 @@ if(!isset($_SESSION['hasLogin'])){
 
   <link rel="stylesheet" href="css/flaticon.css">
   <link rel="stylesheet" href="css/icomoon.css">
-  <link rel="stylesheet" href="css/depositstyle.css">
+  <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
@@ -45,6 +45,21 @@ if(!isset($_SESSION['hasLogin'])){
     <div class="slider-item">
       <div class="overlay"></div>
       <div class="container">
+          <div class="row slider-text justify-content-center align-items-center">
+            <div class="col-md-10 col-sm-12 ftco-animate mb-4 text-center">
+              <p class="breadcrumbs"><span class="mr-2"><a href="index.php">Home</a></span> <span class="mr-2"><a href="about.php">profile</a></span></p>
+              <h1 class="mb-3 bread">ฝากเงิน</h1>
+              <h1 class="mb-3 fixfont"><?php echo $_SESSION['username']; ?></h1>
+              <?php if(isset($_SESSION['hasAccount'])){ ?>
+              <?php } ?>
+            </div>
+          </div>
+        </div>
+    </div>
+    </div>
+  </section>
+  <section class="boxinput">
+  <div class="container">
         <div class="row slider-text align-items-center justify-content-center">
           <div class="col-md-10 ftco-animate text-center">
             <h1 class="mb-4">
@@ -74,9 +89,8 @@ if(!isset($_SESSION['hasLogin'])){
 
         </div>
       </div>
-    </div>
-    </div>
   </section>
+  
   <!-- END slider -->
 
 
