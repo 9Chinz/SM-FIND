@@ -1,25 +1,9 @@
 <?php
 session_start();
 require "../config/connect.php";
+$date = date("Y-m-d");
 
-if (isset($_POST['btnSearch'])) {
-  $dept = $_POST['dept'];
-  $section = $_POST['section'];
-  $class = $_POST['class'];
-  $room = $_POST['room'];
-  if ($_SESSION['userlevel'] == "bank-account") {
-      $status = 5;
-  }
 
-  $sql = "SELECT member_trans.TransID, member.MemberCode, member.Firstname, member.Lastname, member_account.Account_number, member_trans.Date, member_trans.Amount, member_trans.Status
-  FROM member
-  INNER JOIN member_account ON  member.MemberID = member_account.MemberID
-  INNER JOIN member_trans ON member_account.AccountID = member_trans.AccountID
-  WHERE member_trans.Status = '$status' AND member.Dept = '$dept' AND member.Section = '$section' AND member.Class = '$class' AND member.Room = '$room'";
-
-  $query = mysqli_query($conn, $sql) or die(mysqli_error($conn));
-  $num = mysqli_num_rows($query);
-}
 
 ?>
 <!DOCTYPE html>
@@ -76,6 +60,10 @@ if (isset($_POST['btnSearch'])) {
               </a>
               <!-- Dropdown - User Information -->
               <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
+                <a class="dropdown-item" href="../index.php">
+                  <i class="fas fa-home fa-sm fa-fw mr-2 text-gray-400"></i>
+                  Home
+                </a>
                 <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
                   <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
                   Logout
@@ -93,9 +81,13 @@ if (isset($_POST['btnSearch'])) {
 
           <!-- Page Heading -->
           <div class="d-sm-flex align-items-center justify-content-between mb-4">
-            <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
+            <h1 class="h3 mb-0 text-gray-800">information</h1>
           </div>
-
+          <?php
+          $sql = "SELECT *,SUM(`Amount`) AS Result FROM `member_trans` WHERE `Status` = '5' AND `Date` = '$date'";
+          $query = mysqli_query($conn, $sql) or die(mysqli_error($conn));
+          $sumResult = mysqli_fetch_array($query);
+          ?>
           <!-- Content Row -->
           <div class="row">
 
@@ -106,7 +98,11 @@ if (isset($_POST['btnSearch'])) {
                   <div class="row no-gutters align-items-center">
                     <div class="col mr-2">
                       <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">เงินฝากรายวัน</div>
-                      <div class="h5 mb-0 font-weight-bold text-gray-800">40,000฿</div>
+                      <div class="h5 mb-0 font-weight-bold text-gray-800"><?php if (!empty($sumResult['Result'])) {
+                                                                            echo $sumResult['Result']."฿";
+                                                                          } else {
+                                                                            echo "0฿";
+                                                                          } ?></div>
                     </div>
                     <div class="col-auto">
                       <i class="fas fa-money-bill-wave fa-2x text-gray-300"></i>
@@ -115,15 +111,17 @@ if (isset($_POST['btnSearch'])) {
                 </div>
               </div>
             </div>
-
-            <!-- Earnings (Monthly) Card Example -->
+            <?php
+            //for week
+            
+            ?>
             <div class="col-xl-3 col-md-6 mb-4">
               <div class="card border-left-success shadow h-100 py-2">
                 <div class="card-body">
                   <div class="row no-gutters align-items-center">
                     <div class="col mr-2">
                       <div class="text-xs font-weight-bold text-success text-uppercase mb-1">ยอดเงินฝากรายสัปดาห์</div>
-                      <div class="h5 mb-0 font-weight-bold text-gray-800">215,000฿</div>
+                      <div class="h5 mb-0 font-weight-bold text-gray-800">0฿</div>
                     </div>
                     <div class="col-auto">
                       <i class="fas fa-money-check-alt fa-2x text-gray-300"></i>
@@ -132,7 +130,12 @@ if (isset($_POST['btnSearch'])) {
                 </div>
               </div>
             </div>
-
+            <?php
+            //for week
+            $sql = "SELECT * FROM `member_trans` WHERE `Status` = '5' AND `Date` = '$date'";
+            $query = mysqli_query($conn, $sql) or die(mysqli_error($conn));
+            $numRow = mysqli_num_rows($query);
+            ?>
             <!-- Earnings (Monthly) Card Example -->
             <div class="col-xl-3 col-md-6 mb-4">
               <div class="card border-left-info shadow h-100 py-2">
@@ -142,7 +145,7 @@ if (isset($_POST['btnSearch'])) {
                       <div class="text-xs font-weight-bold text-info text-uppercase mb-1">นักศึกษาที่ฝากวันนี้</div>
                       <div class="row no-gutters align-items-center">
                         <div class="col-auto">
-                          <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">250</div>
+                          <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800"><?php echo $numRow; ?></div>
                         </div>
                       </div>
                     </div>
@@ -153,7 +156,12 @@ if (isset($_POST['btnSearch'])) {
                 </div>
               </div>
             </div>
-
+            <?php
+            //for week
+            $sql = "SELECT * FROM `member_trans` WHERE `Status` < '5' AND `Date` = '$date'";
+            $query = mysqli_query($conn, $sql) or die(mysqli_error($conn));
+            $numRow = mysqli_num_rows($query);
+            ?>
             <!-- Pending Requests Card Example -->
             <div class="col-xl-3 col-md-6 mb-4">
               <div class="card border-left-warning shadow h-100 py-2">
@@ -161,7 +169,7 @@ if (isset($_POST['btnSearch'])) {
                   <div class="row no-gutters align-items-center">
                     <div class="col mr-2">
                       <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">รอการยืนยันทำรายการ</div>
-                      <div class="h5 mb-0 font-weight-bold text-gray-800">18</div>
+                      <div class="h5 mb-0 font-weight-bold text-gray-800"><?php echo $numRow; ?></div>
                     </div>
                     <div class="col-auto">
                       <i class="fas fa-user-check fa-2x text-gray-300"></i>
@@ -186,7 +194,7 @@ if (isset($_POST['btnSearch'])) {
                     <div class="col-xl-3 col-md-6 mb-4">
                       <nav class="navbar navbar-expand navbar-light bg-light mb-4">
                         <a class="navbar-brand" href="#">สาขา</a>
-                        <select name="dept">
+                        <select name="dept" class="dropcon">
                           <option value="IT">เทคโนโลยีสารสนเทศ</option>
                           <option value="CG">คอมพิวเตอร์กราฟิก</option>
                           <option value="BC">คอมพิวเตอร์ธุรกิจ</option>
@@ -211,7 +219,7 @@ if (isset($_POST['btnSearch'])) {
                     <div class="col-xl-3 col-md-6 mb-4">
                       <nav class="navbar navbar-expand navbar-light bg-light mb-4">
                         <a class="navbar-brand" href="#">ระดับ</a>
-                        <select name="section">
+                        <select name="section"class="dropcon">
                           <option value="Lower">ปวช</option>
                           <option value="Upper">ปวส</option>
                         </select>
@@ -220,7 +228,7 @@ if (isset($_POST['btnSearch'])) {
                     <div class="col-xl-3 col-md-6 mb-4">
                       <nav class="navbar navbar-expand navbar-light bg-light mb-4">
                         <a class="navbar-brand" href="#">ชั้น</a>
-                        <select name="class">
+                        <select name="class" class="dropcon">
                           <option value="1">1</option>
                           <option value="2">2</option>
                           <option value="3">3</option>
@@ -229,8 +237,8 @@ if (isset($_POST['btnSearch'])) {
                     </div>
                     <div class="col-xl-3 col-md-6 mb-4">
                       <nav class="navbar navbar-expand navbar-light bg-light mb-4">
-                        <a class="navbar-brand" href="#">ห้อง</a>
-                        <select name="room">
+                        <a class="navbar-brand" href="#" >ห้อง</a>
+                        <select name="room"class="dropcon">
                           <option value="1">1</option>
                           <option value="2">2</option>
                           <option value="3">3</option>
@@ -262,6 +270,13 @@ if (isset($_POST['btnSearch'])) {
 
           </div>
         </div>
+
+        <?php
+        
+        
+
+        
+        ?>
         <div class="card shadow mb-4 table_style">
           <div class="card-header py-3">
             <h6 class="m-0 font-weight-bold text-primary">ตาราง</h6>
@@ -271,41 +286,53 @@ if (isset($_POST['btnSearch'])) {
               <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                 <thead>
                   <tr>
-                    <th>Name</th>
-                    <th>Position</th>
-                    <th>Office</th>
-                    <th>Age</th>
-                    <th>Start date</th>
-                    <th>Salary</th>
+                    <th scope="col">#</th>
+                    <th scope="col">รหัสนักศึกษา</th>
+                    <th scope="col">ชื่อ-นามสกุล</th>
+                    <th scope="col">เลขที่บัญชี</th>
+                    <th scope="col">จำนวนเงิน</th>
+                    <th scope="col" colspan="2">สถานะการฝาก</th>
                   </tr>
                 </thead>
-                <tfoot>
-                  <tr>
-                    <th>Name</th>
-                    <th>Position</th>
-                    <th>Office</th>
-                    <th>Age</th>
-                    <th>Start date</th>
-                    <th>Salary</th>
-                  </tr>
-                </tfoot>
                 <tbody>
-                  <tr>
-                    <td>Tiger Nixon</td>
-                    <td>System Architect</td>
-                    <td>Edinburgh</td>
-                    <td>61</td>
-                    <td>2011/04/25</td>
-                    <td>$320,800</td>
-                  </tr>
-                  <tr>
-                    <td>Donna Snider</td>
-                    <td>Customer Support</td>
-                    <td>New York</td>
-                    <td>27</td>
-                    <td>2011/01/25</td>
-                    <td>$112,000</td>
-                  </tr>
+                  <?php
+                  if (isset($_POST['btnSearch'])) {
+                    $dept = $_POST['dept'];
+                    $section = $_POST['section'];
+                    $class = $_POST['class'];
+                    $room = $_POST['room'];
+          
+                    $sql = "SELECT member_trans.TransID, member.MemberCode, member.Firstname, member.Lastname, member_account.Account_number, member_trans.Date, member_trans.Amount, member_trans.Status
+                    FROM member
+                    INNER JOIN member_account ON  member.MemberID = member_account.MemberID
+                    INNER JOIN member_trans ON member_account.AccountID = member_trans.AccountID
+                    WHERE member.Dept = '$dept' AND member.Section = '$section' AND member.Class = '$class' AND member.Room = '$room' AND Date = '$date'";
+          
+                    if ($_SESSION['userlevel'] == "bank-account") {
+                      $status = 5;
+                    } else {
+                      $status = 4;
+                    }
+                    $query = mysqli_query($conn, $sql) or die(mysqli_error($conn));
+                  
+
+                  $n = 1;
+                    while ($row = mysqli_fetch_array($query)) { 
+                      if(!empty($row['Status'])){
+                        if($row['Status'] == "$status"){ ?>
+                        <tr>
+                        <th scope="row"><?php echo $n; ?></th>
+                        <td><?php echo $row['MemberCode']; ?></td>
+                        <td><?php echo $row['Firstname'] . " " . $row['Lastname']; ?></td>
+                        <td><?php echo $row['Account_number']; ?></td>
+                        <td><?php echo $row['Amount']; ?><span>฿</span></td>
+                        <td>สถานะการฝาก</td>
+                      </tr>
+                      <?php }} ?>
+                    <?php $n++;
+                    }
+                  }
+                  ?>
                 </tbody>
               </table>
             </div>

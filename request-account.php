@@ -81,7 +81,7 @@ if(!isset($_SESSION['hasLogin'])){
               <?php }
             } else { ?>
              
-                <h1>- ไม่มีคำร้องเปิดบัญชี</h1>
+                <h1 class="text-light">- ไม่มีคำร้องเปิดบัญชี</h1>
               
             <?php } ?>
           </div>

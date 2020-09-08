@@ -16,7 +16,7 @@
 <li class="nav-item active">
   <a class="nav-link" href="./management-board.php">
     <i class="fas fa-fw fa-tachometer-alt"></i>
-    <span>report</span></a>
+    <span>หน้าหลัก</span></a>
 </li>
 
 <!-- Divider -->
@@ -26,7 +26,7 @@
 <li class="nav-item active">
   <a class="nav-link" href="./deposit-management.php">
     <i class="fas fa-fw fa-tachometer-alt"></i>
-    <span>deposit management</span></a>
+    <span>จัดการเงินฝาก</span></a>
 </li>
 <!-- Divider -->
 <!-- Nav Item - Charts -->
