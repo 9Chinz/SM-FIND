@@ -2453,6 +2453,7 @@ fieldset:disabled a.btn {
   color: #fff;
   background-color: #1cc88a;
   border-color: #1cc88a;
+  margin-left: 5%;
 }
 
 .btn-success:hover {
@@ -11260,4 +11261,12 @@ body.sidebar-toggled footer.sticky-footer {
 }
 .table_style{
   margin-top: 2%;
+}
+.dropcon{
+  width: 100%;
+  border: 0;
+  background-color: #f8f9fc !important;
+}
+table th ,tr{
+  text-align: center;
 }
