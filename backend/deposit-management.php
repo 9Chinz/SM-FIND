@@ -3,6 +3,7 @@ session_start();
 require "../config/connect.php";
 
 include "./search.php";
+$date = date("Y-m-d");
 
 if (isset($_GET['btn'])) {
   $btn = $_GET['btn'];
@@ -96,6 +97,10 @@ if (isset($_GET['btn'])) {
               </a>
               <!-- Dropdown - User Information -->
               <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
+                <a class="dropdown-item" href="../index.php">
+                  <i class="fas fa-home fa-sm fa-fw mr-2 text-gray-400"></i>
+                  Home
+                </a>
                 <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
                   <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
                   Logout
@@ -125,60 +130,7 @@ if (isset($_GET['btn'])) {
               </div>
               <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="post">
                 <div class="card-body">
-                  <div class="row">
-                    <div class="col-xl-3 col-md-6 mb-4">
-                      <nav class="navbar navbar-expand navbar-light bg-light mb-4">
-                        <a class="navbar-brand" href="#">สาขา</a>
-                        <select name="dept">
-                          <option value="IT">เทคโนโลยีสารสนเทศ</option>
-                          <option value="CG">คอมพิวเตอร์กราฟิก</option>
-                          <option value="BC">คอมพิวเตอร์ธุรกิจ</option>
-                          <option value="AC">บัญชี</option>
-                        </select>
-                      </nav>
-                    </div>
-                    <div class="col-xl-3 col-md-6 mb-4">
-                      <nav class="navbar navbar-expand navbar-light bg-light mb-4">
-                        <a class="navbar-brand" href="#">ระดับ</a>
-                        <select name="section">
-                          <option value="Lower">ปวช</option>
-                          <option value="Upper">ปวส</option>
-                        </select>
-                      </nav>
-                    </div>
-                    <div class="col-xl-3 col-md-6 mb-4">
-                      <nav class="navbar navbar-expand navbar-light bg-light mb-4">
-                        <a class="navbar-brand" href="#">ชั้น</a>
-                        <select name="class">
-                          <option value="1">1</option>
-                          <option value="2">2</option>
-                          <option value="3">3</option>
-                        </select>
-                      </nav>
-                    </div>
-                    <div class="col-xl-3 col-md-6 mb-4">
-                      <nav class="navbar navbar-expand navbar-light bg-light mb-4">
-                        <a class="navbar-brand" href="#">ห้อง</a>
-                        <select name="room">
-                          <option value="1">1</option>
-                          <option value="2">2</option>
-                          <option value="3">3</option>
-                          <option value="4">4</option>
-                          <option value="5">5</option>
-                          <option value="6">6</option>
-                          <option value="7">7</option>
-                          <option value="8">8</option>
-                          <option value="9">9</option>
-                          <option value="10">10</option>
-                          <option value="11">11</option>
-                          <option value="12">12</option>
-                          <option value="13">13</option>
-                          <option value="14">14</option>
-                          <option value="15">15</option>
-                        </select>
-                      </nav>
-                    </div>
-                  </div>
+                  <?php include "./search_bar.php"; ?>
                   <input type="submit" class="btn btn-primary" value="ค้นหา" name="btnSearch">
                 </div>
               </form>
@@ -216,9 +168,11 @@ if (isset($_GET['btn'])) {
                               <td><?php echo $row['MemberCode']; ?></td>
                               <td><?php echo $row['Firstname'] . " " . $row['Lastname']; ?></td>
                               <td><?php echo $row['Account_number']; ?></td>
-                              <td><?php echo $row['Amount']; ?><span>฿</span></td>
-                              <td><a href="<?php echo $_SERVER['PHP_SELF']; ?>?id=<?php echo $row['TransID']; ?>&btn=accept" class="btn btn-success">ยอมรับ</a></td>
-                              <td><a href="<?php echo $_SERVER['PHP_SELF']; ?>?id=<?php echo $row['TransID']; ?>& btn=reject" class="btn btn-danger">ปฎิเสธ</a></td>
+                                <td><?php echo $row['Amount']; ?><span>฿</span></td>
+                                <td>
+                                <a href="<?php echo $_SERVER['PHP_SELF']; ?>?id=<?php echo $row['TransID']; ?>&btn=accept" class="btn btn-success">ยอมรับ</a>
+                              <a href="<?php echo $_SERVER['PHP_SELF']; ?>?id=<?php echo $row['TransID']; ?>& btn=reject" class="btn btn-danger">ปฎิเสธ</a>
+                              </td>
                             </tr>
                           </form>
                         <?php $n++;
