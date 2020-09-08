@@ -200,7 +200,7 @@ if (isset($_GET['btn'])) {
                       <th scope="col">ชื่อ-นามสกุล</th>
                       <th scope="col">เลขที่บัญชี</th>
                       <th scope="col">จำนวนเงิน</th>
-                      <th scope="col">ตรวจสอบ</th>
+                      <th scope="col" colspan="2">ตรวจสอบ</th>
                       
                     </tr>
                   </thead>
