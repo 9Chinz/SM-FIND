@@ -144,8 +144,7 @@ $todayDate = date("Y-m-d");
                 <th scope="col">ชื่อ-นามสกุล</th>
                 <th scope="col">เลขที่บัญชี</th>
                 <th scope="col">จำนวนเงิน</th>
-                <th scope="col">ตรวจสอบ</th>
-                <th scope="col">ตรวจสอบ</th>
+                <th colspan="2" scope="col">ตรวจสอบ</th>
               </tr>
             </thead>
             <tbody>
@@ -160,8 +159,8 @@ $todayDate = date("Y-m-d");
                     <td><?php echo $row['Firstname'] . " " . $row['Lastname']; ?></td>
                     <td><?php echo $row['Account_number']; ?></td>
                     <td><?php echo $row['Amount']; ?><span>฿</span></td>
-                    <td><a href="./config/report-process.php?id=<?php echo $row['TransID']; ?>&btn=accept"  class="btn btn-success" onclick=" return confirm('are you sure');">ยอมรับ</a></td>
-                    <td><a href="./config/report-process.php?id=<?php echo $row['TransID']; ?>& btn=reject" class="btn btn-danger">ปฎิเสธ</a></td>
+                    <td><a href="./config/report-process.php?id=<?php echo $row['TransID']; ?>&btn=accept"  class="btn btn-success" onclick=" return confirm('are you sure');">ยอมรับ</a>
+                    <a href="./config/report-process.php?id=<?php echo $row['TransID']; ?>& btn=reject" class="btn btn-danger">ปฎิเสธ</a></td>
                   </tr>
                 <?php $n++;
                 }
