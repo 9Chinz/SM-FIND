@@ -82,10 +82,10 @@ $result = mysqli_fetch_array($query);
                 <input type="email" class="form-control" name="email" value="<?php echo $result['Email']; ?>" placeholder="email" readonly>
               </div>
               <div class="form-group">
-                <input type="text" class="form-control" name="accountNumber" placeholder="เลขบัญชี">
+                <input type="text" class="form-control" name="accountNumber" placeholder="เลขบัญชี" required>
               </div>
               <div class="form-group">
-                <input type="text" class="form-control" name="bankBook" placeholder="เลขสมุดบัญชี">
+                <input type="text" class="form-control" name="bankBook" placeholder="เลขสมุดบัญชี" required>
               </div>
               <div class="form-group">
                 <input type="text" step=0.01 class="form-control" value="<?php echo $result['Begin_cash']; ?>" name="cash" placeholder="จำนวนเงินที่ฝากขั้นต้น" min="100" readonly>
