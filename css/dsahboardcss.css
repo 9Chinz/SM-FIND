@@ -1,0 +1,131 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+body{
+    padding-top: 60px;
+    background: #f1f4f7;
+    font-size: 14px;
+    color: #444444;
+    font-family: "Montserrat", "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+.navbar-custom{
+    background: black;
+    height: 60px;
+}
+.navbar-fixed-bottom, .navbar-fixed-top {
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    z-index: 1030;
+}
+.container-fluid h1{
+    margin-bottom: 10px;
+    color: white;
+    font-family: Moon-Bold ;
+    letter-spacing: -1px;
+}
+.container-fluid h1 span{
+    color: orange;
+    margin: 10px;
+}
+.navbar-toggler{
+    margin-bottom: 10px;
+    background-color:white;
+    color: white;
+    float: right;
+    display: none;
+}
+.sidebar{
+    padding: 0px;
+    display: none;
+}
+@media (min-width: 768px){
+    .sidebar {
+        background-color: white;
+        display: block;
+        position: fixed;
+        top: 60px;
+        bottom: 0;
+        left: 0;
+        z-index: 1000;
+        display: block;
+        margin: 0;
+        padding: 0;
+        overflow-x: hidden;
+        overflow-y: auto;
+       
+    }}
+    
+.sidebar ul {
+    padding-top: 20px;
+}
+.sidebar ul li {
+    list-style: none;
+}
+
+.sidebar ul li a{
+    text-decoration: none ;
+    transition: 0.50s;
+    padding: 10px 15px;
+    display: block;
+    height: 50px;
+    font-size: 15px;
+    line-height: 2em;
+    color: #444444;
+}
+.sidebar ul li a:hover  {
+    color: white;
+    background-color: #89F5F9;
+}
+.active{
+    background-color: #89F5F9;
+}
+
+.menu-icon{
+    background-color: black;
+    display: block;
+    width: 22px;
+    height: 2px;
+    border-radius: 1px;
+   margin-top: 4px;
+}
+.navbar-toggler-icon{
+    padding: 15%;
+}
+.main{
+    margin-left: 15%;
+    padding: 50px;
+}
+.show{
+    display: block;
+}
+@media (max-width: 768px){
+   .navbar-toggler{
+       display: block;
+   }
+   .sidebar{
+    min-width: 100%;
+    background-color:white ;
+   }
+   .main{
+    margin-left: 0;
+    padding: 2%;
+   }
+}
+  @media (max-width: 992px){
+   
+}
+  @media (max-width: 1200px){
+    
+}
+@media (max-width: 1636px){
+      
+}
+@media (max-width: 576px) {
+     
+    
+    }
+    
