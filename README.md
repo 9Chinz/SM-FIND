@@ -7,4 +7,4 @@ form low to high level
   - headroom/subheadroom _(special status)_
 - teacher
 - teller
-- bank account d
+- bank account
