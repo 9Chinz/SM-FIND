@@ -30,4 +30,20 @@ $('#id_class').change(function(){
     });
 });
 
+$('#stdSearch').click(function(){
+    let id_dept = $('#id_dept').val();
+    let id_degree = $('#id_degree').val();
+    let id_class = $('#id_class').val();
+    let id_room = $('#id_room').val();
+    
+    $.ajax({
+        type: "POST",
+        url: "ajax_db.php",
+        data: {id_dept:id_dept, id_degree:id_degree, id_class:id_class, id_room:id_room, function: 'stdSearch'},
+        success: function(data){
+            $('#tbStd').html(data);
+        }
+    });
+});
+
 </script>
