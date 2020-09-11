@@ -121,7 +121,11 @@ $date = date("Y-m-d");
                   <div class="row no-gutters align-items-center">
                     <div class="col mr-2">
                       <div class="text-xs font-weight-bold text-success text-uppercase mb-1">ยอดเงินฝากรายสัปดาห์</div>
-                      <div class="h5 mb-0 font-weight-bold text-gray-800">0฿</div>
+                      <div class="h5 mb-0 font-weight-bold text-gray-800"><?php if (!empty($sumResult['Result'])) {
+                                                                            echo $sumResult['Result']."฿";
+                                                                          } else {
+                                                                            echo "0฿";
+                                                                          } ?></div>
                     </div>
                     <div class="col-auto">
                       <i class="fas fa-money-check-alt fa-2x text-gray-300"></i>
@@ -188,10 +192,10 @@ $date = date("Y-m-d");
               <div class="card-header py-3">
                 <h6 class="m-0 font-weight-bold text-primary">ค้นหาห้องเรียน</h6>
               </div>
-              <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="post">
+              <form>
                 <div class="card-body">
                   <?php include "./search_bar.php"; ?>
-                  <input type="submit" class="btn btn-primary" value="ค้นหา" name="btnSearch">
+                  <button type="button" class="btn btn-primary" id="stdSearch">Submit</button>
               </form>
             </div>
 
@@ -214,53 +218,15 @@ $date = date("Y-m-d");
               <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                 <thead>
                   <tr>
-                    <th scope="col">#</th>
                     <th scope="col">รหัสนักศึกษา</th>
-                    <th scope="col">ชื่อ-นามสกุล</th>
+                    <th scope="col" >ชื่อ-นามสกุล</th>
                     <th scope="col">เลขที่บัญชี</th>
                     <th scope="col">จำนวนเงิน</th>
                     <th scope="col" colspan="2">สถานะการฝาก</th>
                   </tr>
                 </thead>
-                <tbody>
-                  <?php
-                  if (isset($_POST['btnSearch'])) {
-                    $dept = $_POST['dept'];
-                    $section = $_POST['section'];
-                    $class = $_POST['class'];
-                    $room = $_POST['room'];
-          
-                    $sql = "SELECT member_trans.TransID, member.MemberCode, member.Firstname, member.Lastname, member_account.Account_number, member_trans.Date, member_trans.Amount, member_trans.Status
-                    FROM member
-                    INNER JOIN member_account ON  member.MemberID = member_account.MemberID
-                    INNER JOIN member_trans ON member_account.AccountID = member_trans.AccountID
-                    WHERE member.Dept = '$dept' AND member.Section = '$section' AND member.Class = '$class' AND member.Room = '$room' AND Date = '$date'";
-          
-                    if ($_SESSION['userlevel'] == "bank-account") {
-                      $status = 5;
-                    } else {
-                      $status = 4;
-                    }
-                    $query = mysqli_query($conn, $sql) or die(mysqli_error($conn));
+                <tbody id="tbStd">
                   
-
-                  $n = 1;
-                    while ($row = mysqli_fetch_array($query)) { 
-                      if(!empty($row['Status'])){
-                        if($row['Status'] == "$status"){ ?>
-                        <tr>
-                        <th scope="row"><?php echo $n; ?></th>
-                        <td><?php echo $row['MemberCode']; ?></td>
-                        <td><?php echo $row['Firstname'] . " " . $row['Lastname']; ?></td>
-                        <td><?php echo $row['Account_number']; ?></td>
-                        <td><?php echo $row['Amount']; ?><span>฿</span></td>
-                        <td>สถานะการฝาก</td>
-                      </tr>
-                      <?php }} ?>
-                    <?php $n++;
-                    }
-                  }
-                  ?>
                 </tbody>
               </table>
             </div>
