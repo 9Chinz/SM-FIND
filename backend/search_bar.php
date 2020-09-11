@@ -2,7 +2,8 @@
     <div class="col-xl-3 col-md-6 mb-4">
         <nav class="navbar navbar-expand navbar-light bg-light mb-4">
             <a class="navbar-brand" href="#">สาขา</a>
-            <select name="dept"class="dropcon">
+            <select name="dept"class="dropcon" id="id_dept">
+                <option value="" selected disabled>-เลือกสาขา-</option>
                 <option value="IT">เทคโนโลยีสารสนเทศ</option>
                 <option value="CG">คอมพิวเตอร์กราฟิก</option>
                 <option value="BC">คอมพิวเตอร์ธุรกิจ</option>
