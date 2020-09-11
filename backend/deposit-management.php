@@ -4,41 +4,44 @@ require "../config/connect.php";
 
 include "./search.php";
 $date = date("Y-m-d");
-
 if (isset($_GET['btn'])) {
-  $btn = $_GET['btn'];
-  $id = $_GET['id'];
-  if ($btn == "accept") {
-    if ($_SESSION['userlevel'] == "teller") {
-      $sql = "UPDATE member_trans SET Status = '4' WHERE TransID = '$id'";
-    } elseif ($_SESSION['userlevel'] == "bank-account") {
-      $sql = "UPDATE member_trans SET Status = '5' WHERE TransID = '$id'";
-    }
-    $query = mysqli_query($conn, $sql) or die(mysqli_error($conn));
-    if ($query) {
-      if($_SESSION['userlevel'] == "bank-account"){
-        $sql = "SELECT * FROM member_trans WHERE TransID = '$id'";
-        $query = mysqli_query($conn, $sql) or die(mysqli_error($conn));
-        $result = mysqli_fetch_array($query);
-        $accountID= $result['AccountID'];
-        $amount = $result['Amount'];
-        $plusSql = "UPDATE member_account SET Account_balance = Account_balance+'$amount' WHERE AccountID = '$accountID';";
-        $sum = mysqli_query($conn, $plusSql) or die(mysqli_error($conn));
+  if (!empty($_GET['id'])) {
+    $btn = $_GET['btn'];
+    $id = $_GET['id'];
+    if ($btn == "accept") {
+      if ($_SESSION['userlevel'] == "teller") {
+        $sql = "UPDATE member_trans SET Status = '4' WHERE TransID = '$id'";
+      } elseif ($_SESSION['userlevel'] == "bank-account") {
+        $sql = "UPDATE member_trans SET Status = '5' WHERE TransID = '$id'";
       }
-      echo '<meta http-equiv="refresh" content="0; url=./deposit-management.php"> ';
+      $query = mysqli_query($conn, $sql) or die(mysqli_error($conn));
+      if ($query) {
+        if ($_SESSION['userlevel'] == "bank-account") {
+          $sql = "SELECT * FROM member_trans WHERE TransID = '$id'";
+          $query = mysqli_query($conn, $sql) or die(mysqli_error($conn));
+          $result = mysqli_fetch_array($query);
+          $accountID = $result['AccountID'];
+          $amount = $result['Amount'];
+          $plusSql = "UPDATE member_account SET Account_balance = Account_balance+'$amount' WHERE AccountID = '$accountID';";
+          $sum = mysqli_query($conn, $plusSql) or die(mysqli_error($conn));
+        }
+        echo '<meta http-equiv="refresh" content="0; url=./deposit-management.php"> ';
+      } else {
+        echo "<script>alert('failed to change status!')</script>";
+        echo '<meta http-equiv="refresh" content="1; url=./deposit-management.php"> ';
+      }
     } else {
-      echo "<script>alert('failed to change status!')</script>";
-      echo '<meta http-equiv="refresh" content="1; url=./deposit-management.php"> ';
+      $sql = "UPDATE member_trans SET Status = '0' WHERE TransID = '$id'";
+      $query = mysqli_query($conn, $sql) or die(mysqli_error($conn));
+      if ($query) {
+        echo '<meta http-equiv="refresh" content="0; url=./deposit-management.php"> ';
+      } else {
+        echo "<script>alert('failed to change status!')</script>";
+        echo '<meta http-equiv="refresh" content="1; url=./deposit-management.php"> ';
+      }
     }
-  } else {
-    $sql = "UPDATE member_trans SET Status = '0' WHERE TransID = '$id'";
-    $query = mysqli_query($conn, $sql) or die(mysqli_error($conn));
-    if ($query) {
-      echo '<meta http-equiv="refresh" content="0; url=./deposit-management.php"> ';
-    } else {
-      echo "<script>alert('failed to change status!')</script>";
-      echo '<meta http-equiv="refresh" content="1; url=./deposit-management.php"> ';
-    }
+  }else{
+    echo "<script>alert('please select choice')</script>";
   }
 }
 
@@ -58,7 +61,7 @@ if (isset($_GET['btn'])) {
 
   <!-- Custom fonts for this template-->
   <link href="../vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
-  
+
 
   <!-- Custom styles for this template-->
   <link href="../css/sb-admin-2.css" rel="stylesheet">
@@ -154,7 +157,7 @@ if (isset($_GET['btn'])) {
                       <th scope="col">เลขที่บัญชี</th>
                       <th scope="col">จำนวนเงิน</th>
                       <th scope="col" colspan="2">ตรวจสอบ</th>
-                      
+
                     </tr>
                   </thead>
                   <tbody>
@@ -169,10 +172,10 @@ if (isset($_GET['btn'])) {
                               <td><?php echo $row['MemberCode']; ?></td>
                               <td><?php echo $row['Firstname'] . " " . $row['Lastname']; ?></td>
                               <td><?php echo $row['Account_number']; ?></td>
-                                <td><?php echo $row['Amount']; ?><span>฿</span></td>
-                                <td>
+                              <td><?php echo $row['Amount']; ?><span>฿</span></td>
+                              <td>
                                 <a href="<?php echo $_SERVER['PHP_SELF']; ?>?id=<?php echo $row['TransID']; ?>&btn=accept" class="btn btn-success">ยอมรับ</a>
-                              <a href="<?php echo $_SERVER['PHP_SELF']; ?>?id=<?php echo $row['TransID']; ?>& btn=reject" class="btn btn-danger">ปฎิเสธ</a>
+                                <a href="<?php echo $_SERVER['PHP_SELF']; ?>?id=<?php echo $row['TransID']; ?>& btn=reject" class="btn btn-danger">ปฎิเสธ</a>
                               </td>
                             </tr>
                           </form>
