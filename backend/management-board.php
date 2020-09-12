@@ -25,6 +25,8 @@ $date = date("Y-m-d");
   <!-- Custom styles for this template-->
   <link href="../css/sb-admin-2.css" rel="stylesheet">
 
+  <link rel="stylesheet" href="../css/datepicker.css">
+
 </head>
 
 <body id="page-top">
@@ -99,7 +101,7 @@ $date = date("Y-m-d");
                     <div class="col mr-2">
                       <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">เงินฝากรายวัน</div>
                       <div class="h5 mb-0 font-weight-bold text-gray-800"><?php if (!empty($sumResult['Result'])) {
-                                                                            echo $sumResult['Result']."฿";
+                                                                            echo $sumResult['Result'] . "฿";
                                                                           } else {
                                                                             echo "0฿";
                                                                           } ?></div>
@@ -113,7 +115,7 @@ $date = date("Y-m-d");
             </div>
             <?php
             //for week
-            
+
             ?>
             <div class="col-xl-3 col-md-6 mb-4">
               <div class="card border-left-success shadow h-100 py-2">
@@ -122,7 +124,7 @@ $date = date("Y-m-d");
                     <div class="col mr-2">
                       <div class="text-xs font-weight-bold text-success text-uppercase mb-1">ยอดเงินฝากรายสัปดาห์</div>
                       <div class="h5 mb-0 font-weight-bold text-gray-800"><?php if (!empty($sumResult['Result'])) {
-                                                                            echo $sumResult['Result']."฿";
+                                                                            echo $sumResult['Result'] . "฿";
                                                                           } else {
                                                                             echo "0฿";
                                                                           } ?></div>
@@ -205,10 +207,10 @@ $date = date("Y-m-d");
         </div>
 
         <?php
-        
-        
 
-        
+
+
+
         ?>
         <div class="card shadow mb-4 table_style">
           <div class="card-header py-3">
@@ -220,14 +222,14 @@ $date = date("Y-m-d");
                 <thead>
                   <tr>
                     <th scope="col">รหัสนักศึกษา</th>
-                    <th scope="col" >ชื่อ-นามสกุล</th>
+                    <th scope="col">ชื่อ-นามสกุล</th>
                     <th scope="col">เลขที่บัญชี</th>
                     <th scope="col">จำนวนเงิน</th>
                     <th scope="col" colspan="2">สถานะการฝาก</th>
                   </tr>
                 </thead>
                 <tbody id="tbStd">
-                  
+
                 </tbody>
               </table>
             </div>
@@ -305,6 +307,9 @@ $date = date("Y-m-d");
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
   <script src="../js/mains.js"></script>
   <?php include('./script.php'); ?>
+  <script src="../js/datepicker.js"></script>
+  <script src="../js/datepicker.th-TH.js"></script>
+
 </body>
 
 </html>
