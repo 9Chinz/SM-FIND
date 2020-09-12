@@ -38,6 +38,9 @@ if (isset($_POST['function']) and $_POST['function'] == 'stdSearch') {
     $id_room = $_POST['id_room'];
     $sql = "SELECT * FROM `member` WHERE `Userlevel` = 'student' AND Dept = '$id_dept' AND Section = '$id_degree' AND Class = '$id_class' AND Room = '$id_room'";
     $query = mysqli_query($conn, $sql) or die(mysqli_error($conn));
+    //count student
+    $i = 0;
+    $depoCount = 0;
     while ($row = mysqli_fetch_array($query)) {
         $memId = $row['MemberID'];
         $Accsql = "SELECT * FROM `member` 
@@ -66,6 +69,12 @@ if (isset($_POST['function']) and $_POST['function'] == 'stdSearch') {
                 <td>'.$TransRow['Amount'].'</td>
                 <td>'.$transStatus.'</td>
             </tr>';
+            if($transStatus == "ฝากแล้ว"){
+                // sumation of amount transaction
+                $sumAmount += $TransRow['Amount'];
+                //count transaction successful
+                $depoCount++;
+            }
         }else if(empty($TransRow) AND !empty($AccRow)){
             echo '<tr>
                 <th scope="row">'.$row['MemberCode'].'</th>
@@ -84,5 +93,21 @@ if (isset($_POST['function']) and $_POST['function'] == 'stdSearch') {
             </tr>';
         }
         
+        $i++;
     }
+    if($sumAmount != 0){
+        echo '<tr>
+                <td colspan="3">ยอดรวม</td>        
+                <td>'.$sumAmount.'</td> 
+                <td></td> 
+            </tr>';
+    }else{
+        echo '<tr>
+                <td colspan="3">ยอดรวม</td>        
+                <td>0</td> 
+                <td></td> 
+            </tr>';
+    }
+    
+    
 }
