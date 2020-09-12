@@ -1,3 +1,8 @@
+<?php
+date_default_timezone_set("Asia/Bangkok");
+$presentDate = date("d/m/Y")."\n";
+$startDate = date('d/m/Y', strtotime('-15 day', strtotime(date("r"))));
+?>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script type="text/javascript">
 
@@ -44,6 +49,15 @@ $('#stdSearch').click(function(){
             $('#tbStd').html(data);
         }
     });
+});
+
+$(document).ready(function() {
+    $('[data-toggle="datepicker"]').datepicker({
+        format: 'dd/mm/yyyy',
+        language: 'th-TH'
+    });
+    $('[data-toggle="datepicker"]').datepicker('setStartDate', '01/09/2020');
+    $('[data-toggle="datepicker"]').datepicker('setEndDate', '13/09/2020');
 });
 
 </script>
