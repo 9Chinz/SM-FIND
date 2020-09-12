@@ -42,7 +42,7 @@ $date = date("Y-m-d");
       <div id="content">
 
         <!-- Topbar -->
-        <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
+        <nav class="navbar printna navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
 
           <!-- Sidebar Toggle (Topbar) -->
           <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
@@ -54,7 +54,7 @@ $date = date("Y-m-d");
             <div class="topbar-divider d-none d-sm-block"></div>
 
             <!-- Nav Item - User Information -->
-            <li class="nav-item dropdown no-arrow">
+            <li class="printna nav-item dropdown no-arrow">
               <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <span class="mr-2 d-none d-lg-inline text-gray-600 small"><?php echo $_SESSION['username']; ?></span>
               </a>
@@ -81,7 +81,7 @@ $date = date("Y-m-d");
 
           <!-- Page Heading -->
           <div class="d-sm-flex align-items-center justify-content-between mb-4">
-            <h1 class="h3 mb-0 text-gray-800">information</h1>
+            <h1 class="h3 mb-0 text-gray-800 printna">information</h1>
           </div>
           <?php
           $sql = "SELECT *,SUM(`Amount`) AS Result FROM `member_trans` WHERE `Status` = '5' AND `Date` = '$date'";
@@ -89,7 +89,7 @@ $date = date("Y-m-d");
           $sumResult = mysqli_fetch_array($query);
           ?>
           <!-- Content Row -->
-          <div class="row">
+          <div class="row printna ">
 
             <!-- Earnings (Monthly) Card Example -->
             <div class="col-xl-3 col-md-6 mb-4">
@@ -186,7 +186,7 @@ $date = date("Y-m-d");
 
           <!-- Content Row -->
 
-          <div class="col-lg-12">
+          <div class="col-lg-12 printna">
 
             <div class="card shadow  position-relative">
               <div class="card-header py-3">
@@ -196,6 +196,7 @@ $date = date("Y-m-d");
                 <div class="card-body">
                   <?php include "./search_bar.php"; ?>
                   <button type="button" class="btn btn-primary" id="stdSearch">Submit</button>
+                  <button type="button" class="btn btn-primary" id="stdprint">Print</button>
               </form>
             </div>
 
@@ -302,6 +303,7 @@ $date = date("Y-m-d");
   <script src="../js/demo/chart-pie-demo.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <script src="../js/mains.js"></script>
   <?php include('./script.php'); ?>
 </body>
 
