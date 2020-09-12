@@ -1,9 +1,8 @@
 <?php
 session_start();
 require "../config/connect.php";
+include "../config/timeFormat.php";
 $date = date("Y-m-d");
-
-
 
 ?>
 <!DOCTYPE html>
