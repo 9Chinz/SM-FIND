@@ -37,16 +37,19 @@
             </select>
         </nav>
     </div>
-    <div class="col-xl-3 col-md-6 mb-4">
-        <nav class="navbar navbar-expand navbar-light bg-light mb-1">
-            <a class="navbar-brand">วัน</a>
-            <div class="input-group date" id="datetimepicker4" data-target-input="nearest">
-                <input type="text" class="form-control datetimepicker-input" data-toggle="datepicker" id="id_date" value="<?php echo $presentDate; ?>" >
-                <div class="input-group-append">
-                    <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+    <?php if ($_SERVER['PHP_SELF'] == "/SM-FIND/backend/management-board.php") { ?>
+        <div class="col-xl-3 col-md-6 mb-4">
+            <nav class="navbar navbar-expand navbar-light bg-light mb-1">
+                <a class="navbar-brand">วัน</a>
+                <div class="input-group date" id="datetimepicker4" data-target-input="nearest">
+                    <input type="text" class="form-control datetimepicker-input" data-toggle="datepicker" id="id_date" value="<?php echo $presentDate; ?>">
+                    <div class="input-group-append">
+                        <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+                    </div>
                 </div>
-            </div>
-        </nav>
-    </div>
+            </nav>
+        </div>
+    <?php } ?>
+
 
 </div>
