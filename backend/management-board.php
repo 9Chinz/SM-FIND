@@ -194,11 +194,11 @@ include "../config/timeFormat.php";
               <div class="card-header py-3">
                 <h6 class="m-0 font-weight-bold text-primary">ค้นหาห้องเรียน</h6>
               </div>
-              <form>
+              <form action="./report_pdf.php" method="POST" target="_blank" >
                 <div class="card-body">
                   <?php include "./search_bar.php"; ?>
-                  <button type="button" class="btn btn-primary" id="stdSearch">Submit</button>
-                  <button type="button" class="btn btn-primary" id="stdprint">Print</button>
+                  <button type="button" class="btn btn-primary" id="stdSearch">ค้นหา</button>
+                  <input type="submit" class="btn btn-primary" value="ปริ้น" name="stdPrint">
               </form>
             </div>
 
