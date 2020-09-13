@@ -126,7 +126,4 @@ if (isset($_POST['function']) and $_POST['function'] == 'stdSearch') {
 
         }
     }
-    
-    
-    
 }
