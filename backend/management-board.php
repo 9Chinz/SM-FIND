@@ -2,7 +2,6 @@
 session_start();
 require "../config/connect.php";
 include "../config/timeFormat.php";
-$date = date("Y-m-d");
 
 ?>
 <!DOCTYPE html>
@@ -85,7 +84,7 @@ $date = date("Y-m-d");
             <h1 class="h3 mb-0 text-gray-800 printna">information</h1>
           </div>
           <?php
-          $sql = "SELECT *,SUM(`Amount`) AS Result FROM `member_trans` WHERE `Status` = '5' AND `Date` = '$date'";
+          $sql = "SELECT *,SUM(`Amount`) AS Result FROM `member_trans` WHERE `Status` = '5' AND `Date` = '$sqlpresentDate'";
           $query = mysqli_query($conn, $sql) or die(mysqli_error($conn));
           $sumResult = mysqli_fetch_array($query);
           ?>
@@ -114,7 +113,9 @@ $date = date("Y-m-d");
             </div>
             <?php
             //for week
-
+            $sql = "SELECT SUM(`Amount`) AS sumAmount FROM `member_trans` WHERE `Status` = '5' AND `Date` BETWEEN '$startWeek' AND '$endWeek'";
+            $query = mysqli_query($conn, $sql) or die(mysqli_error($conn));
+            $sumResult = mysqli_fetch_array($query);
             ?>
             <div class="col-xl-3 col-md-6 mb-4">
               <div class="card border-left-success shadow h-100 py-2">
@@ -122,8 +123,8 @@ $date = date("Y-m-d");
                   <div class="row no-gutters align-items-center">
                     <div class="col mr-2">
                       <div class="text-xs font-weight-bold text-success text-uppercase mb-1">ยอดเงินฝากรายสัปดาห์</div>
-                      <div class="h5 mb-0 font-weight-bold text-gray-800"><?php if (!empty($sumResult['Result'])) {
-                                                                            echo $sumResult['Result'] . "฿";
+                      <div class="h5 mb-0 font-weight-bold text-gray-800"><?php if (!is_null($sumResult)) {
+                                                                            echo $sumResult['sumAmount'] . '฿';
                                                                           } else {
                                                                             echo "0฿";
                                                                           } ?></div>
@@ -137,7 +138,7 @@ $date = date("Y-m-d");
             </div>
             <?php
             //for week
-            $sql = "SELECT * FROM `member_trans` WHERE `Status` = '5' AND `Date` = '$date'";
+            $sql = "SELECT * FROM `member_trans` WHERE `Status` = '5' AND `Date` = '$sqlpresentDate'";
             $query = mysqli_query($conn, $sql) or die(mysqli_error($conn));
             $numRow = mysqli_num_rows($query);
             ?>
@@ -163,7 +164,7 @@ $date = date("Y-m-d");
             </div>
             <?php
             //for week
-            $sql = "SELECT * FROM `member_trans` WHERE `Status` < '5' AND `Date` = '$date'";
+            $sql = "SELECT * FROM `member_trans` WHERE `Status` < '5' AND `Date` = '$sqlpresentDate'";
             $query = mysqli_query($conn, $sql) or die(mysqli_error($conn));
             $numRow = mysqli_num_rows($query);
             ?>
