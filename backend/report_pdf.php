@@ -170,7 +170,7 @@ if (isset($_POST['stdPrint'])) {
             $pdf->Cell(103, 10, iconv('UTF-8', 'cp874', $sumAmount), 1, 0, "C");
             $pdf->Ln();
         } else if ($sumAmount == 0 and $i != 0) {
-            $pdf->Cell(95, 10, iconv('UTF-8', 'cp874', $sumAmount), 1, 0, 'C');
+            $pdf->Cell(95, 10, iconv('UTF-8', 'cp874', 'ยอดรวม'), 1, 0, 'C');
             $pdf->Cell(103, 10, iconv('UTF-8', 'cp874', '-'), 1, 0, "C");
             $pdf->Ln();
         } else {
