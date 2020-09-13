@@ -1,8 +1,9 @@
 <?php
 session_start();
 require "../config/connect.php";
-
+include "../config/timeFormat.php";
 include "./search.php";
+
 $date = date("Y-m-d");
 if (isset($_GET['btn'])) {
   if (!empty($_GET['id'])) {
@@ -64,8 +65,9 @@ if (isset($_GET['btn'])) {
 
 
   <!-- Custom styles for this template-->
+  <link rel="stylesheet" href="../css/datepicker.css">
   <link href="../css/sb-admin-2.css" rel="stylesheet">
-
+  
 </head>
 
 <body id="page-top">
@@ -242,6 +244,7 @@ if (isset($_GET['btn'])) {
     </div>
   </div>
 
+  <?php include('./script.php'); ?>
   <!-- Bootstrap core JavaScript-->
   <script src="../vendor/jquery/jquery.min.js"></script>
   <script src="../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
@@ -256,11 +259,13 @@ if (isset($_GET['btn'])) {
   <script src="../vendor/chart.js/Chart.min.js"></script>
 
   <!-- Page level custom scripts -->
+  <script src="../js/datepicker.js"></script>
+  <script src="../js/datepicker.th-TH.js"></script>
   <script src="../js/demo/chart-area-demo.js"></script>
   <script src="../js/demo/chart-pie-demo.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-  <?php include('./script.php'); ?>
+  
 
 </body>
 
