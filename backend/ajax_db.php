@@ -1,6 +1,6 @@
 <?php
 include "../config/connect.php";
-$date = date('Y-m-d');
+include "../config/timeFormat.php";
 
 if(isset($_POST['function']) AND $_POST['function'] == 'degree'){
     $id_degree = $_POST['id'];
@@ -32,15 +32,28 @@ if(isset($_POST['function']) AND $_POST['function'] == 'class'){
 }
 
 if (isset($_POST['function']) and $_POST['function'] == 'stdSearch') {
+    if(empty($_POST['id_dept']) OR empty($_POST['id_degree']) OR empty($_POST['id_class']) OR empty($_POST['id_room']) OR empty($_POST['id_date'])){
+        echo "<script>alert('please select data!')</script>";
+        exit();
+    }
     $id_dept = $_POST['id_dept'];
     $id_degree = $_POST['id_degree'];
     $id_class = $_POST['id_class'];
     $id_room = $_POST['id_room'];
+    $selectDate = $_POST['id_date'];
+    if($selectDate == $presentDate){
+        $sqlSelectDate = date("Y-m-d", strtotime('today'));
+    }else{
+        $sqlSelectDate = date("Y-d-m", strtotime($selectDate));
+    }
+    
     $sql = "SELECT * FROM `member` WHERE `Userlevel` = 'student' AND Dept = '$id_dept' AND Section = '$id_degree' AND Class = '$id_class' AND Room = '$id_room'";
     $query = mysqli_query($conn, $sql) or die(mysqli_error($conn));
     //count student
     $i = 0;
     $depoCount = 0;
+    //sum amount
+    $sumAmount = 0;
     while ($row = mysqli_fetch_array($query)) {
         $memId = $row['MemberID'];
         $Accsql = "SELECT * FROM `member` 
@@ -52,10 +65,10 @@ if (isset($_POST['function']) and $_POST['function'] == 'stdSearch') {
         $TransSql = "SELECT * FROM `member` 
         INNER JOIN member_account on member.MemberID = member_account.MemberID
         INNER JOIN member_trans on member_account.AccountID = member_trans.AccountID
-        WHERE member.MemberID = '$memId' AND member_trans.Date = '$date';";
+        WHERE member.MemberID = '$memId' AND member_trans.Date = '$sqlSelectDate';";
         $TransQuery = mysqli_query($conn, $TransSql) or die(mysqli_error($conn));
         $TransRow = mysqli_fetch_array($TransQuery);
-
+        
         if(!empty($AccRow) AND !empty($TransRow)){
             if($TransRow['Status'] == "5"){
                 $transStatus = "ฝากแล้ว";
@@ -95,19 +108,25 @@ if (isset($_POST['function']) and $_POST['function'] == 'stdSearch') {
         
         $i++;
     }
-    if($sumAmount != 0){
-        echo '<tr>
-                <td colspan="3">ยอดรวม</td>        
-                <td>'.$sumAmount.'</td> 
-                <td></td> 
-            </tr>';
-    }else{
-        echo '<tr>
-                <td colspan="3">ยอดรวม</td>        
-                <td>0</td> 
-                <td></td> 
-            </tr>';
+    
+    if(isset($sumAmount)){
+        if($sumAmount != 0){
+            echo '<tr>
+                    <td colspan="3">ยอดรวม</td>        
+                    <td>'.$sumAmount.'</td> 
+                    <td></td> 
+                </tr>';
+        }else if($sumAmount == 0 AND $i != 0){
+            echo '<tr>
+                    <td colspan="3">ยอดรวม</td>        
+                    <td>0</td> 
+                    <td></td> 
+                </tr>';
+        }else{
+
+        }
     }
+    
     
     
 }
