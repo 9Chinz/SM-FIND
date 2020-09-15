@@ -1,14 +1,14 @@
 <?php
 include "../config/connect.php";
-include "../config/timeFormat.php";
+require "../config/timeFormat.php";
 
-if(isset($_POST['function']) AND $_POST['function'] == 'degree'){
+if (isset($_POST['function']) and $_POST['function'] == 'degree') {
     $id_degree = $_POST['id'];
-    if($id_degree == "Upper"){
+    if ($id_degree == "Upper") {
         echo '<option value="" selected disabled>-เลือกชั้น-</option>';
         echo '<option value="1">1</option>';
         echo '<option value="2">2</option>';
-    }else{
+    } else {
         echo '<option value="" selected disabled>-เลือกชั้น-</option>';
         echo '<option value="1">1</option>';
         echo '<option value="2">2</option>';
@@ -16,7 +16,7 @@ if(isset($_POST['function']) AND $_POST['function'] == 'degree'){
     }
 }
 
-if(isset($_POST['function']) AND $_POST['function'] == 'class'){
+if (isset($_POST['function']) and $_POST['function'] == 'class') {
     $id_degree = $_POST['id_degree'];
     $id_class = $_POST['id_class'];
 
@@ -26,13 +26,13 @@ if(isset($_POST['function']) AND $_POST['function'] == 'class'){
     WHERE degree.degree = '$id_degree' AND class.class = '$id_class';";
     echo '<option value="" selected disabled>-เลือกห้อง-</option>';
     $query = mysqli_query($conn, $sql) or die(mysqli_error($conn));
-    while($row = mysqli_fetch_array($query)){
-        echo '<option value="'.$row['room'].'">'.$row['room'].'</option>';
+    while ($row = mysqli_fetch_array($query)) {
+        echo '<option value="' . $row['room'] . '">' . $row['room'] . '</option>';
     }
 }
 
 if (isset($_POST['function']) and $_POST['function'] == 'stdSearch') {
-    if(empty($_POST['id_dept']) OR empty($_POST['id_degree']) OR empty($_POST['id_class']) OR empty($_POST['id_room']) OR empty($_POST['id_date'])){
+    if (empty($_POST['id_dept']) or empty($_POST['id_degree']) or empty($_POST['id_class']) or empty($_POST['id_room']) or empty($_POST['id_date'])) {
         echo "<script>alert('please select data!')</script>";
         exit();
     }
@@ -41,12 +41,15 @@ if (isset($_POST['function']) and $_POST['function'] == 'stdSearch') {
     $id_class = $_POST['id_class'];
     $id_room = $_POST['id_room'];
     $selectDate = $_POST['id_date'];
-    if($selectDate == $presentDate){
+    $sqlDate = $_POST['id_date'];
+    if ($selectDate == $presentDate) {
         $sqlSelectDate = date("Y-m-d", strtotime('today'));
-    }else{
-        $sqlSelectDate = date("Y-d-m", strtotime($selectDate));
+    } else {
+        $sqlDates = explode('/', $sqlDate);
+        $sqlArray = array($sqlDates[2], $sqlDates[1], $sqlDates[0]);
+        $sqlSelectDate = implode("/", $sqlArray);
     }
-    
+
     $sql = "SELECT * FROM `member` WHERE `Userlevel` = 'student' AND Dept = '$id_dept' AND Section = '$id_degree' AND Class = '$id_class' AND Room = '$id_room'";
     $query = mysqli_query($conn, $sql) or die(mysqli_error($conn));
     //count student
@@ -68,62 +71,61 @@ if (isset($_POST['function']) and $_POST['function'] == 'stdSearch') {
         WHERE member.MemberID = '$memId' AND member_trans.Date = '$sqlSelectDate';";
         $TransQuery = mysqli_query($conn, $TransSql) or die(mysqli_error($conn));
         $TransRow = mysqli_fetch_array($TransQuery);
-        
-        if(!empty($AccRow) AND !empty($TransRow)){
-            if($TransRow['Status'] == "5"){
+
+        if (!empty($AccRow) and !empty($TransRow)) {
+            if ($TransRow['Status'] == "5") {
                 $transStatus = "ฝากแล้ว";
-            }else{
+            } else {
                 $transStatus = "รอการยืนยัน";
             }
             echo '<tr>
-                <th scope="row">'.$row['MemberCode'].'</th>
-                <td>'.$row['Firstname']." ".$row['Lastname'].'</td>
-                <td>'.$AccRow['Account_number'].'</td>
-                <td>'.$TransRow['Amount'].'</td>
-                <td>'.$transStatus.'</td>
+                <th scope="row">' . $row['MemberCode'] . '</th>
+                <td>' . $row['Firstname'] . " " . $row['Lastname'] . '</td>
+                <td>' . $AccRow['Account_number'] . '</td>
+                <td>' . $TransRow['Amount'] . '</td>
+                <td>' . $transStatus . '</td>
             </tr>';
-            if($transStatus == "ฝากแล้ว"){
+            if ($transStatus == "ฝากแล้ว") {
                 // sumation of amount transaction
                 $sumAmount += $TransRow['Amount'];
                 //count transaction successful
                 $depoCount++;
             }
-        }else if(empty($TransRow) AND !empty($AccRow)){
+        } else if (empty($TransRow) and !empty($AccRow)) {
             echo '<tr>
-                <th scope="row">'.$row['MemberCode'].'</th>
-                <td>'.$row['Firstname']." ".$row['Lastname'].'</td>
-                <td>'.$AccRow['Account_number'].'</td>
+                <th scope="row">' . $row['MemberCode'] . '</th>
+                <td>' . $row['Firstname'] . " " . $row['Lastname'] . '</td>
+                <td>' . $AccRow['Account_number'] . '</td>
                 <td>-</td>
                 <td>ยังไม่ฝาก</td>
             </tr>';
-        }else{
+        } else {
             echo '<tr>
-                <th scope="row">'.$row['MemberCode'].'</th>
-                <td>'.$row['Firstname']." ".$row['Lastname'].'</td>
+                <th scope="row">' . $row['MemberCode'] . '</th>
+                <td>' . $row['Firstname'] . " " . $row['Lastname'] . '</td>
                 <td>ไม่มีบัญชี</td>
                 <td>-</td>
                 <td>-</td>
             </tr>';
         }
-        
+
         $i++;
     }
-    
-    if(isset($sumAmount)){
-        if($sumAmount != 0){
+
+    if (isset($sumAmount)) {
+        if ($sumAmount != 0) {
             echo '<tr>
                     <td colspan="3">ยอดรวม</td>        
-                    <td>'.$sumAmount.'</td> 
+                    <td>' . $sumAmount . '</td> 
                     <td></td> 
                 </tr>';
-        }else if($sumAmount == 0 AND $i != 0){
+        } else if ($sumAmount == 0 and $i != 0) {
             echo '<tr>
                     <td colspan="3">ยอดรวม</td>        
                     <td>0</td> 
                     <td></td> 
                 </tr>';
-        }else{
-
+        } else {
         }
     }
 }
