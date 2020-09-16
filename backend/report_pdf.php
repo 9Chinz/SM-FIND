@@ -115,8 +115,8 @@ if (isset($_POST['stdPrint'])) {
     $pdf->Cell(60, 10, iconv('UTF-8', 'cp874', 'ชื่อ-นามสกุล'), 1, 0, "C");
     $pdf->Cell(103, 10, iconv('UTF-8', 'cp874', 'จำนวนเงินที่ฝาก'), 1, 0, "C");
     $pdf->Ln();
-
-    $sql = "SELECT * FROM `member` WHERE `Userlevel` = 'student' AND Dept = '$dept' AND Section = '$section' AND Class = '$class' AND Room = '$room'";
+    
+    $sql = "SELECT * FROM `member` WHERE `Userlevel` = 'student' AND Dept = '$dept' AND Section = '$section' AND Class = '$class' AND Room = '$room' ORDER BY MemberCode ASC;";
     $query = mysqli_query($conn, $sql) or die(mysqli_error($conn));
     //count student
     $i = 0;

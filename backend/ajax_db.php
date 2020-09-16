@@ -50,7 +50,7 @@ if (isset($_POST['function']) and $_POST['function'] == 'stdSearch') {
         $sqlSelectDate = implode("/", $sqlArray);
     }
 
-    $sql = "SELECT * FROM `member` WHERE `Userlevel` = 'student' AND Dept = '$id_dept' AND Section = '$id_degree' AND Class = '$id_class' AND Room = '$id_room'";
+    $sql = "SELECT * FROM `member` WHERE `Userlevel` = 'student' AND Dept = '$id_dept' AND Section = '$id_degree' AND Class = '$id_class' AND Room = '$id_room' ORDER BY MemberCode ASC;";
     $query = mysqli_query($conn, $sql) or die(mysqli_error($conn));
     //count student
     $i = 0;
