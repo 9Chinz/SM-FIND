@@ -37,7 +37,7 @@
             </select>
         </nav>
     </div>
-    <?php if ($_SERVER['PHP_SELF'] == "/SM-FIND/backend/management-board.php") { ?>
+    <?php if ($_SERVER['PHP_SELF'] != "/SM-FIND/backend/deposit-management.php") { ?>
         <div class="col-xl-3 col-md-6 mb-4">
             <nav class="navbar navbar-expand navbar-light bg-light mb-1">
                 <a class="navbar-brand">วัน</a>
