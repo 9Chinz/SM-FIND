@@ -22,6 +22,7 @@
                 <div class="signup-content">
                     <div class="signup-form">
                         <h2 class="form-title">Sign up</h2>
+                        <div class="blockinput">
                         <form method="POST" class="register-form" id="register-form">
                             <div class="form-group">
                                 <label for="email"><i class="zmdi zmdi-email"></i></label>
@@ -51,21 +52,7 @@
                                 <label for="re-pass"><i class="zmdi zmdi-lock-outline"></i></label>
                                 <input type="password" name="re_pass" id="re_pass" placeholder="กรอกรหัสผ่านอีกครั้ง" required />
                             </div>
-                            <div class="form-group-s">
-                                <label for="section" class="labelsection"  required>ระดับชั้น:</label>
-                                <select id="section" name="section">
-                                    <option value="lower">ปวช.</option>
-                                    <option value="upper">ปวส.</option>
-                                 
-                                  </select>
-                                  <label for="marjor" class="labelmajor"  required >สาขา:</label>
-                                  <select id="major" name="major">
-                                    <option value="IT">IT</option>
-                                    <option value="BC">BC</option>
-                                    <option value="MK">MK</option>
-                                    <option value="TR">TR</option>
-                                  </select>
-                            </div>
+                           
                             <div class="form-group">
                                 <label for="re-pass"><i class="zmdi "></i></label>
                                 <input type="number" name="re_pass" id="class" placeholder="ชั้น"  required/>
@@ -80,12 +67,33 @@
                                 <label for="agree-term" class="label-agree-term"><span><span></span></span>I agree all statements in  <a href="#" class="term-service">Terms of service</a></label>
                             </div>
                             <div class="form-group form-button">
-                                <input type="submit" name="signup" id="signup" class="form-submit" value="Register"/>
+                               <button class="continue">continue</button>
                             </div>
+               
                         </form>
+                        <form action="" class="register2" >
+                        <div class="form-group-s">
+                                <label for="section" class="labelsection"  required>ระดับชั้น:</label>
+                                <select id="section" name="section">
+                                    <option value="lower">ปวช.</option>
+                                    <option value="upper">ปวส.</option>
+                                 
+                                  </select>
+                                  <label for="marjor" class="labelmajor"  required >สาขา:</label>
+                                  <select id="major" name="major">
+                                    <option value="IT">IT</option>
+                                    <option value="BC">BC</option>
+                                    <option value="MK">MK</option>
+                                    <option value="TR">TR</option>
+                                  </select>
+                                  
+                            </div>
+                    </form>
+                        </div>
+                     
                     </div>
                     <div class="signup-image">
-                        <figure><img src="images/signup-image.jpg" alt="sing up image"></figure>
+                        <figure class="toggleimg"><img src="images/signup-image.jpg" alt="sing up image"></figure>
                         <a href="login.html" class="signup-image-link">I am already member</a>
                     </div>
                 </div>

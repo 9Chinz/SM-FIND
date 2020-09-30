@@ -441,6 +441,7 @@ figure {
 
 .register-form {
   width: 100%;
+  position: relative;
 }
 
 .form-group {
@@ -805,4 +806,8 @@ label.valid:after {
 .class {
   width: 50%;
 }
+.register2{
+  display: none;
+}
+
 /*# sourceMappingURL=style.css.map */
