@@ -4,5 +4,6 @@ $(document).ready(function(){
     });
 })
 $(".continue").click(function(){
-    $("form").animate({ height : "toggle" ,opacity : "toggle"}, "slow");
+    $(".register").animate({ height : "toggle" ,opacity : "toggle"}, "slow");
+    $(".register2").animate({ height : "toggle" ,opacity : "toggle"}, "slow");
 });

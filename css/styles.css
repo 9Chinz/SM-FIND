@@ -809,5 +809,23 @@ label.valid:after {
 .register2{
   display: none;
 }
+.continue{
+  border: black solid 1px;
+  width: 100%;
+  padding: 5% ;
+  box-shadow: 2px 2px 5px grey;
+  background: none;
+}
+.continue:hover{
+background-color: black;
+color: white;
+transition: 0.3s;
+}
+.form-button{
+  min-height: 50px;
+}
+.form-group #class2{
+  min-width: 80%;
+}
 
 /*# sourceMappingURL=style.css.map */
