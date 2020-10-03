@@ -23,7 +23,7 @@ class PDF extends FPDF
         $date = explode("/", $this->date);
         $this->date = $date[0];
         $this->month = $date[1];
-        $this->month = $this->Month($this->month);
+        $this->month = $this->Month(($this->month)-1);
         $this->year = ((int)$date[2] + 543);
     }
 
