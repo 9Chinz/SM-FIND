@@ -69,8 +69,8 @@
                                             <option value="upper">ปวส.</option>
 
                                         </select>
-                                        </div>
-                                        <div class="form-group">
+                                    </div>
+                                    <div class="form-group">
                                         <label for="section" class="labelsection" required>ชั้น :</label>
                                         <select id="class2" name="class">
                                             <option value="IT">IT</option>
@@ -78,10 +78,10 @@
                                             <option value="MK">MK</option>
                                             <option value="TR">TR</option>
                                         </select>
-                                       
-                                        </div>
-                                        
-                                        <div class="form-group">
+
+                                    </div>
+
+                                    <div class="form-group">
                                         <label for="section" class="labelsection" required>ห้อง :</label>
                                         <select id="room2" name="room">
                                             <option value="IT">IT</option>
@@ -89,24 +89,24 @@
                                             <option value="MK">MK</option>
                                             <option value="TR">TR</option>
                                         </select>
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="password"><i class="zmdi zmdi-lock-outline"></i></label>
-                                            <input type="password" name="password" id="password" placeholder="รหัสผ่าน" required />
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="re-pass"><i class="zmdi zmdi-lock-outline"></i></label>
-                                            <input type="password" name="re_pass" id="re_pass" placeholder="กรอกรหัสผ่านอีกครั้ง" required />
-                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="password"><i class="zmdi zmdi-lock-outline"></i></label>
+                                        <input type="password" name="password" id="password" placeholder="รหัสผ่าน" required />
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="re-pass"><i class="zmdi zmdi-lock-outline"></i></label>
+                                        <input type="password" name="re_pass" id="re_pass" placeholder="กรอกรหัสผ่านอีกครั้ง" required />
+                                    </div>
 
-                                        <div class="form-group">
-                                            <input type="checkbox" name="agree-term" id="agree-term" class="agree-term" />
-                                            <label for="agree-term" class="label-agree-term"><span><span></span></span>I agree all statements in <a href="#" class="term-service">Terms of service</a></label>
-                                        </div>
-                                        <div class="form-group form-button">
-                                            <button class="continue">continue</button>
-                                        </div>
-                                    
+                                    <div class="form-group">
+                                        <input type="checkbox" name="agree-term" id="agree-term" class="agree-term" />
+                                        <label for="agree-term" class="label-agree-term"><span><span></span></span>I agree all statements in <a href="#" class="term-service">Terms of service</a></label>
+                                    </div>
+                                    <div class="form-group form-button">
+                                        <button class="continue">continue</button>
+                                    </div>
+
                             </form>
                         </div>
 
