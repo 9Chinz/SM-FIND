@@ -1,3 +1,4 @@
+
 <?php
 session_start();
 require('../fpdf182/fpdf.php');
@@ -102,6 +103,7 @@ if (isset($_POST['stdPrint'])) {
     }
 
     $pdf = new PDF('P', 'mm', 'A4');
+    $pdf->SetTitle('Deposit result');
     $pdf->inputDate($selectDate);
     $pdf->inputClass($dept, $section, $class, $room);
     $pdf->AddPage();
