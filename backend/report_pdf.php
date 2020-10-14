@@ -141,15 +141,16 @@ if (isset($_POST['stdPrint'])) {
         $TransRow = mysqli_fetch_array($TransQuery);
 
         if (!empty($AccRow) and !empty($TransRow)) {
-            if ($TransRow['Status'] == "5") {
-                $transStatus = "ฝากแล้ว";
-            } else {
-                $transStatus = "รอการยืนยัน";
-            }
             $pdf->Cell(12, 10, iconv('UTF-8', 'cp874', ($i+1)), 1, 0, 'C');
             $pdf->Cell(23, 10, iconv('UTF-8', 'cp874', $row['MemberCode']), 1, 0, "C");
             $pdf->Cell(60, 10, iconv('UTF-8', 'cp874', $row['Firstname'] . " " . $row['Lastname']), 1, 0, "C");
-            $pdf->Cell(103, 10, iconv('UTF-8', 'cp874', $TransRow['Amount']), 1, 0, "C");
+            if ($TransRow['Status'] == "5") {
+                $transStatus = "ฝากแล้ว";
+                $pdf->Cell(103, 10, iconv('UTF-8', 'cp874', $TransRow['Amount']), 1, 0, "C");
+            } else {
+                $transStatus = "รอการยืนยัน";
+                $pdf->Cell(103, 10, iconv('UTF-8', 'cp874', '-'), 1, 0, "C");
+            }
             $pdf->Ln();
             if ($transStatus == "ฝากแล้ว") {
                 // sumation of amount transaction
