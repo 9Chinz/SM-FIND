@@ -71,7 +71,7 @@
           <div class="block-3 d-md-flex ftco-animate">
             <a href="" class="image" style="background-image: url('images/technology2.svg'); "></a>
             <div class="text">
-              <h4 class="subheading">Gamification</h4>
+              <h4 class="subheading">Gamificationzz</h4>
               <h2 class="heading"><a href="">game-design elementsssssssssss </a></h2>
               <p>Gamification เป็น Apps หรือบริการที่นำเอาคอนเซ็ปของเกมมาประยุกต์ใช้ มีการวางกลไกของเกมภายใน App อาทิเช่น การกำหนดกิจกรรมให้ทำ มีการนำเสนอแต้ม, leader boards, levels, badge ต่างๆ มาประยุกต์เป็นส่วนหนึ่งของเนื้อหาเพื่อการกระตุ้นและดึงความสนใจให้คนมาเข้าร่วม พอพูดคร่าวๆ แบบนี้แล้วทุกคนก็เริ่มจะร้อง อ๋อ เพราะว่าหลายคนก็คงเคยใช้ App ประเภท Gamification มาแล้วกันทั้งนั้น อย่างเช่น Location-Based Game ที่ชื่อว่า Foursquare ที่แบรนด์ต่างๆ สามารถให้รางวัลเมื่อเข้ามาทำการ Checkin ตามกฎเกณฑ์ที่กำหนด</p>
             </div>
